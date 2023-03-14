@@ -12,23 +12,6 @@ public class UserServices{
 
     public User CreateAccount(User user){
         try{
-            // Console.Write("Please Enter Your First Name: ");
-            // string fname = Console.ReadLine()!;
-
-            // Console.Write("Please Enter Your Last Name: ");
-            // string lname = Console.ReadLine()!;
-
-            // Console.Write("Please Create Your Username: ");
-            // string uName = Console.ReadLine()!;
-
-            // Console.Write("Please Create A Password: ");
-            // string pwd = Console.ReadLine()!;
-
-            // user = new ();
-            // user.FirstName = fname;
-            // user.LastName = lname;
-            // user.Username = uName;
-            // user.Password = pwd;
             _iRepo.AddUser(user);
             user.Wallet = 1000;
             return (user);
