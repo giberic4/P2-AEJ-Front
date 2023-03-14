@@ -8,7 +8,7 @@ import { User } from './models/user';
 })
 export class BackApiServiceService {
 
-  apiRoot : string = 'http://localhost:5144/swagger/index.html';
+  apiRoot : string = 'http://localhost:5144/';
 
   constructor(private http: HttpClient) { }
 
