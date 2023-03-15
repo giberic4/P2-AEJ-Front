@@ -1,19 +1,20 @@
-<!-- <h2>All Workouts</h2>
-<table *ngIf="items.length > 0">
-    <thead>
-        <th>Id</th>
-        <th>Date</th>
-        <th>Name</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let i of items">
-            <td>{{i.id}}</td>
-            <td>{{i.name}}</td>
-            <td>{{i.balance}}</td>
-        </tr>
-    </tbody>
-    
-</table>
-<p *ngIf="items.length === 0">
-    No workouts to display... :(
-</p> -->
+<h1>Get User Items</h1>
+<form (submit)="processForm($event)" [formGroup]="getItemForm">
+    <label for="u-id">User ID<span class="required">*</span></label>
+    <input type="text" name="u-id" id="u-id" formControlName="userID">
+    <!-- <div *ngIf="workoutForm.controls['workoutName'].invalid && workoutForm.controls['workoutName'].touched">
+        <span class="required" *ngIf="workoutForm.controls['workoutName'].errors?.['required']">Workout Name is required</span>
+        <span class="required" *ngIf="workoutForm.controls['workoutName'].errors?.['maxlength']">Workout Name needs to be 256 characters or less</span>
+    </div> -->
+    <!-- <label for="w-date">Workout Date</label>
+    <input type="datetime-local" name="w-date" id="w-date" formControlName="workoutDate">
+
+    <label for="ex-name">Exercise Name: </label>
+    <input type="text" id="ex-name" formControlName="workoutExerciseName">
+
+    <label for="ex-notes">Exercise Notes:</label>
+    <input type="text" id="ex-notes" formControlName="workoutExerciseNotes"> -->
+
+
+    <input type="submit" role="button" value="Create">
+</form>

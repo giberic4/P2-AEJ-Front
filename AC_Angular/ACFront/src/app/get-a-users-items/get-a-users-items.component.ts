@@ -1,4 +1,5 @@
 import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormArray} from '@angular/forms';
 import { BackApiServiceService } from '../back-api-service.service';
 
 @Component({
@@ -6,16 +7,24 @@ import { BackApiServiceService } from '../back-api-service.service';
   templateUrl: './get-a-users-items.component.html',
   styleUrls: ['./get-a-users-items.component.css']
 })
-export class GetAUsersItemsComponent implements OnInit{
+  
+  export class GetAUsersItemsComponent {
 
-  user : any[] = []
-  constructor(private api: BackApiServiceService) { }
-  ngOnInit(): void {
-    // Useful for any initial set up such as fetching data
-    this.api.ViewPersonalItems().subscribe(data => {
-      console.log(data);
-      this.user = data;
-    });
-}
+    constructor(private api: BackApiServiceService) { }
+  
+    getItemForm : FormGroup = new FormGroup({
+      userID : new FormControl('', [Validators.required, Validators.maxLength(256)]),
+    })
+  
+    processForm(e: Event) {
+      e.preventDefault();
+      console.log(this.getItemForm);
 
-}
+      this.api.getAllUserItems1().subscribe(data => console.log(data));
+      if(this.getItemForm.valid) {
+        console.log(this.getItemForm.value);
+  
+        this.api.getAllUserItems(this.getItemForm.value).subscribe(data => console.log(data));
+      }
+    }
+  }
