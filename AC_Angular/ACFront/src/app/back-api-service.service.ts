@@ -19,6 +19,7 @@ export class BackApiServiceService {
   // }
 
   getAllUserItems(id : number) {
+    // console.log("hey",id[""]);
     let newUrl=this.apiRoot+`/userid?userid=${id}`;
     return this.http.get(newUrl);
   }

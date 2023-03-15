@@ -20,11 +20,11 @@ import { BackApiServiceService } from '../back-api-service.service';
       e.preventDefault();
       console.log(this.getItemForm);
 
-      this.api.getAllUserItems1().subscribe(data => console.log(data));
+      // this.api.getAllUserItems1().subscribe(data => console.log(data));
       if(this.getItemForm.valid) {
-        console.log(this.getItemForm.value);
+        console.log(this.getItemForm.controls['userID'].value);
   
-        this.api.getAllUserItems(this.getItemForm.value).subscribe(data => console.log(data));
+        this.api.getAllUserItems(this.getItemForm.controls['userID'].value).subscribe(data => console.log(data));
       }
     }
   }
