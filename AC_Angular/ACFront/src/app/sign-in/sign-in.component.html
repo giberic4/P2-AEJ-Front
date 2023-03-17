@@ -1,11 +1,10 @@
-<p>sign-in works!</p>
 <!doctype html>
 <html lang="en">
 
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sign in example • Pico.css</title>
+    <title>Sign in</title>
     <meta name="description" content="A minimalist layout for Login pages. Built with Pico CSS.">
     <link rel="shortcut icon" href="https://picocss.com/favicon.ico">
     <link rel="canonical" href="https://picocss.com/examples/sign-in/">
@@ -31,13 +30,13 @@
           <hgroup>
             <h1>Sign in</h1>
           </hgroup>
-            <form [formGroup]="signinform" (ngSubmit)="login()">
+            <form [formGroup]="signinform" (ngSubmit)="validate()">
 
               <label for="username">Username: </label>
-              <input id="username" type="text" formControlName="username">
+              <input required id="loginID" type="text" formControlName="username">
             
               <label for="password">Password: </label>
-              <input id="password" type="password" formControlName="password">
+              <input required id="passwordID" type="password" formControlName="password">
               <button type="submit" [disabled]="!signinform.valid">Submit</button>
             </form>
         </div>
