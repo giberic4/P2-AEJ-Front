@@ -1,0 +1,23 @@
+<h1>Show Marketplace Items</h1>
+
+<button (click)="Clicked($event)">Show All Items</button>
+
+<table *ngIf="items.length > 0">
+    <thead>
+        <th>Listing ID</th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of items">
+            <td>{{i.Id}}</td>
+            <td>{{i.Name}}</td>
+            <td>{{i.Balance}}</td>
+            <td>{{i.UnitPrice}}</td>
+        </tr>
+    </tbody>
+</table>
+<p *ngIf="items.length === 0 && clicked">
+    No items to display... :(
+</p>
