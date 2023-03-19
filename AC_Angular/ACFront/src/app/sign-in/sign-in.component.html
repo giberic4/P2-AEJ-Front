@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign in</title>
+    <meta name="description" content="A minimalist layout for Login pages. Built with Pico CSS.">
+    <link rel="shortcut icon" href="https://picocss.com/favicon.ico">
+    <link rel="canonical" href="https://picocss.com/examples/sign-in/">
+
+    <!-- Pico.css -->
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
+
+    <!-- Custom styles for this example -->
+    <link rel="stylesheet" href="sign-in.component.css">
+  </head>
+
+  <body>
+
+    <!-- Nav -->
+    <nav class="container-fluid">
+
+    </nav><!-- ./ Nav -->
+
+    <!-- Main -->
+    <main class="container">
+      <article class="grid">
+        <div>
+          <hgroup>
+            <h1>Sign in</h1>
+          </hgroup>
+            <form [formGroup]="signinform" (ngSubmit)="validate()">
+
+              <label for="username">Username: </label>
+              <input required id="loginID" type="text" formControlName="username">
+            
+              <label for="password">Password: </label>
+              <input required id="passwordID" type="password" formControlName="password">
+              <button type="submit" [disabled]="!signinform.valid">Submit</button>
+            </form>
+        </div>
+        <div>
+            <!-- <img *ngIf="display" [src] = "url" alt = "showImage">
+             <button (click) = "display = !display" >Toggle Image</button> -->
+        </div>
+      </article>
+    </main><!-- ./ Main -->
+
+    <!-- Minimal theme switcher -->
+    <!-- <script src="../js/minimal-theme-switcher.js"></script> -->
+
+  </body>
+
+</html>

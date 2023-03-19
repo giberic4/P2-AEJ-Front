@@ -25,8 +25,7 @@ public class UserServices{
     public List<User>? GetUsers(){
         return _iRepo.GetAllUsers();
     }
-    public bool UserLogin(User user){
-        Console.WriteLine("@@");
+    public int UserLogin(User user){
         return _iRepo.UserLogin(user);
     }
 

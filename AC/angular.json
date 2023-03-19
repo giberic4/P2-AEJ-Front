@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ACFront": {
+    "AC": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/acfront",
+            "outputPath": "dist/ac",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ACFront:build:production"
+              "browserTarget": "AC:build:production"
             },
             "development": {
-              "browserTarget": "ACFront:build:development"
+              "browserTarget": "AC:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ACFront:build"
+            "browserTarget": "AC:build"
           }
         },
         "test": {
@@ -87,7 +87,6 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/@picocss/pico/css/pico.min.css",
               "src/styles.css"
             ],
             "scripts": []
