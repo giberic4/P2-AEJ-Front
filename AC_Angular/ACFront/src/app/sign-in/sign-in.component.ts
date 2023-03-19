@@ -49,7 +49,6 @@ login(u : string, p : string){
   this.newuser.password = p;
   console.log("password in login : " + p)
   console.log(this.newuser);
-  worked : Boolean
   this.service.getLogin(this.newuser).subscribe(data => console.log(data));
 
 

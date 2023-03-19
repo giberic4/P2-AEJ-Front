@@ -44,21 +44,23 @@ public class DBRepository : IRepository
         throw new NotImplementedException();
     }
 
-    public bool UserLogin(User user) {
+    public int UserLogin(User user) {
         using SqlConnection connection = new SqlConnection(_connectionString); 
         
+        string uname = user.Username!;
+        string pass = user.Password!;
+
+        Console.WriteLine("passing in user to login: \n" + user);
+
         connection.Open();
 
-        using SqlCommand cmd = new SqlCommand("SELECT * FROM USERS", connection);
-        using SqlDataReader reader = cmd.ExecuteReader();
-        
-        while(reader.Read()) {
-            string uName = (string) reader["username"];
-            string uPassword = (string) reader["password"];
-            if(uName==user.Username && uPassword==user.Password) {
-                return true;
-            }            
-        }
-        return false;
+        using SqlCommand cmd = new SqlCommand("select id from users where username = @u and password = @p;", connection);
+        cmd.Parameters.AddWithValue("@u", uname);
+        cmd.Parameters.AddWithValue("@p", pass);
+
+        Console.WriteLine("execute scalar");
+        int returnedID = (int) cmd.ExecuteScalar();
+        return returnedID;
+
     }
 }

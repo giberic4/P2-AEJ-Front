@@ -5,5 +5,5 @@ public interface IRepository{
         List<User> GetAllUsers();
         List<Item> GetAllItems();
         User AddUser(User user);
-        bool UserLogin(User user);
+        int UserLogin(User user);
 }

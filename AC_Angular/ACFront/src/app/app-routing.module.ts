@@ -9,7 +9,7 @@ const routes: Routes = [
 path : '',
 component : SignInComponent
 },
-{path: 'users-items/{id}',
+{path: 'users-items/',
  component : GetAUsersItemsComponent 
 }
 ];
