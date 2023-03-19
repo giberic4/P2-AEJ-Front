@@ -1,19 +1,25 @@
-<<<<<<< HEAD
-using Models;
-using Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-
-
-=======
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using DataAccess;
 using Services;
 using Models;
->>>>>>> 9ba8360d55189e9966d4423ebbdaeb6cf0e9004b
+
+var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy  =>
+                      {
+                          policy.WithOrigins("http://example.com",
+                                              "http://www.contoso.com",
+                                              "http://localhost:4200",
+                                              "http://localhost:5144")
+                                               .AllowAnyHeader();
+                      });
+});
 
 // Add services to the container.
 builder.Services.AddScoped<UserServices>();
@@ -50,16 +56,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors(MyAllowSpecificOrigins);
+
 app.UseAuthorization();
 
 app.MapControllers();
 
-<<<<<<< HEAD
 app.MapPost("/users/createAccount", ([FromBody] User user, UserServices service) => {
     return "User Created: " + Results.Created("/users", service.CreateAccount(user));
 });
-=======
-
->>>>>>> 9ba8360d55189e9966d4423ebbdaeb6cf0e9004b
 
 app.Run();
