@@ -65,9 +65,11 @@ body > main {
   /* Hero Image */
   article div:nth-of-type(2) {
     display: none;
-    background-color: transparent;
+    background-color: none;
     background-image: url("src/assets/alessio-soggetti-8jeWeKdygfk-unsplash-1000x1200.jpg");
-    background-position: center center;
+    height: 500px;
+    width: 500px;
+    background-position: center;
     background-size: contain;
   }
   

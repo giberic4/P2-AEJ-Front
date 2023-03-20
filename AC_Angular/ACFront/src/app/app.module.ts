@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { GetMarketplaceItemsComponent } from './get-marketplace-items/get-marketplace-items.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
     UserHomeComponent,
     HomePageComponent,
     NavigationBarComponent
+    GetMarketplaceItemsComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

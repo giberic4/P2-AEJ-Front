@@ -3,23 +3,19 @@
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
 
     <!-- Custom styles for this example -->
-    <link rel="stylesheet" href="get-a-users-items.component.css">
+    <link rel="stylesheet" href="get-marketplace-items.component.css">
 </head>
+ <body>
+<h1>Show Marketplace Items</h1>
 
-<body>
-<h1>Get User Items</h1>
-<form (submit)="processForm($event)" [formGroup]="getItemForm">
-    <label for="u-id">User ID<span class="required">*</span></label>
-    <input type="text" name="u-id" id="u-id" formControlName="userID">
-    <input type="submit" role="button" value="Show Items">
-</form>
+<button (click)="Clicked($event)">Show All Items</button>
 
-<h2 *ngIf="id != null">{{id}}'s items</h2>
 <table *ngIf="items.length > 0">
     <thead>
-        <th>ID</th>
+        <th>Listing ID</th>
         <th>Name</th>
         <th>Quantity</th>
+        <th>Price</th>
         <th>Photo</th>
     </thead>
     <tbody>
@@ -27,7 +23,8 @@
             <td>{{i.Id}}</td>
             <td>{{i.Name}}</td>
             <td>{{i.Balance}}</td>
-            <td><img src={{i.Url}} height="100" width="100"></td>
+            <td>{{i.UnitPrice}}</td>
+            <td><img src={{i.Url}}></td>
         </tr>
     </tbody>
 </table>
