@@ -16,9 +16,10 @@ export class BackApiServiceService {
   apiRoot : string = 'http://localhost:5144';
   apiRoot1 : string = 'http://localhost:5144/user-inventory/userId?userId=5';
   apiRoot2 : string = 'http://localhost:5144/login';
+  username : string = "";
+  constructor(private http: HttpClient) {   }
 
-  constructor(private http: HttpClient) { }
-
+  
   getAllUserItems(id : number) {
     let newUrl=this.apiRoot+`/user-inventory/userid?userid=${id}`;
     return this.http.get(newUrl);

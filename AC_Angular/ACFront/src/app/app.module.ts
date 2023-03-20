@@ -7,6 +7,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { GetAUsersItemsComponent } from './get-a-users-items/get-a-users-items.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GetMarketplaceItemsComponent } from './get-marketplace-items/get-marketplace-items.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { GetMarketplaceItemsComponent } from './get-marketplace-items/get-market
     SignInComponent,
     GetAUsersItemsComponent,
     GetMarketplaceItemsComponent,
-    GetMarketplaceItemsComponent
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

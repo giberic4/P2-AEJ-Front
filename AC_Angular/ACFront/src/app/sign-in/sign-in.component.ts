@@ -4,6 +4,8 @@ import {HttpClient} from '@angular/common/http'
 import { getLocaleDayNames } from '@angular/common';
 import { FormGroup, FormControl } from '@angular/forms';
 import { BackApiServiceService } from '../back-api-service.service';
+import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
 
 
 @Component({
@@ -11,10 +13,15 @@ import { BackApiServiceService } from '../back-api-service.service';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
+
+@Injectable({
+  providedIn:'root'
+})
+
 export class SignInComponent {
 
   
-constructor(_http: HttpClient, private service : BackApiServiceService){}
+constructor(_http: HttpClient, private service : BackApiServiceService, private router : Router){}
 newuser : User = 
 {
   username :  "",
@@ -30,13 +37,14 @@ signinform = new FormGroup({
 });
 
 login(){
-  this.newuser.username = "ericuser";
-  this.newuser.password = "password";
+  this.newuser.username = ((document.getElementById("loginID")) as HTMLInputElement).value;
+  this.newuser.password = ((document.getElementById("passwordID")) as HTMLInputElement).value;
   console.log(this.newuser);
-  worked : Boolean
-  this.service.getLogin(this.newuser).subscribe(data => console.log(data));
 
-
+  this.service.getLogin(this.newuser).subscribe(data => {
+    if (data===true)
+      this.router.navigate([`/user-profile/${this.newuser.username}`]);
+  });
 }
 
 }
