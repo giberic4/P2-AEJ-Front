@@ -4,6 +4,8 @@ import {HttpClient} from '@angular/common/http'
 import { getLocaleDayNames } from '@angular/common';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { BackApiServiceService } from '../back-api-service.service';
+import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
 
 
 @Component({
@@ -11,10 +13,15 @@ import { BackApiServiceService } from '../back-api-service.service';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
+
+@Injectable({
+  providedIn:'root'
+})
+
 export class SignInComponent {
 
   
-constructor(_http: HttpClient, private service : BackApiServiceService){}
+constructor(_http: HttpClient, private service : BackApiServiceService, private router : Router){}
 newuser : User = 
 {
   username :  "",
@@ -49,9 +56,10 @@ login(u : string, p : string){
   this.newuser.password = p;
   console.log("password in login : " + p)
   console.log(this.newuser);
-  this.service.getLogin(this.newuser).subscribe(data => console.log(data));
-
-
+  this.service.getLogin(this.newuser).subscribe(data => {
+    if (data===true)
+      this.router.navigate([`/user-profile/${this.newuser.username}`]);
+  });
 }
 
 }

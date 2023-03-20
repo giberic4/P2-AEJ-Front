@@ -13,38 +13,30 @@ import { Item } from './models/item';
 })
 export class BackApiServiceService {
 
-  apiRoot : string = 'http://localhost:5144/user-inventory';
+  apiRoot : string = 'http://localhost:5144';
   apiRoot1 : string = 'http://localhost:5144/user-inventory/userId?userId=5';
   apiRoot2 : string = 'http://localhost:5144/login';
+  username : string = "";
+  constructor(private http: HttpClient) {   }
 
-  constructor(private http: HttpClient) { }
-
-  // getAllItems() : Observable <User> {
-  //   return this.http.post(this.apiRoot, Observable);
-  // }
-
+  
   getAllUserItems(id : number) {
-    // console.log("hey",id[""]);
-    let newUrl=this.apiRoot+`/userid?userid=${id}`;
+    let newUrl=this.apiRoot+`/user-inventory/userid?userid=${id}`;
     return this.http.get(newUrl);
   }
-  getAllUserItems1() : Observable<Array<User>> {
-    return this.http.get(this.apiRoot1) as Observable<Array<User>>;
+
+
+  getLogin(user : User) : Observable<boolean>{
+    return this.http.post(this.apiRoot+"/login", user) as Observable<boolean>
+
   }
 
-
-
-  getLogin(user : User) : Observable<number>{
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     'accept' : 'text/plain', 
-    //     'Content-Type':  'application/json'
-    //   })
-    // };
-
-
-    return this.http.post(this.apiRoot2, user) as Observable<number>
+  getUserByID(id : number) {
+    let newUrl=this.apiRoot+`/user?userid=${id}`;
+    return this.http.get(newUrl);
   }
 
-
+  getMarketplaceItems(){
+    return this.http.get(this.apiRoot+"/marketplace");
+  }
 }
