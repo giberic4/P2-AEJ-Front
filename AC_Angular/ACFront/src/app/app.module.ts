@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { GetAUsersItemsComponent } from './get-a-users-items/get-a-users-items.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,6 +17,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
+    SignUpComponent
     SignInComponent,
     GetAUsersItemsComponent,
     UserHomeComponent,
