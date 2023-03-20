@@ -8,8 +8,8 @@ import { SignInComponent } from '../sign-in/sign-in.component';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent {
-  constructor(private service : BackApiServiceService, private user : SignInComponent) {console.log(user.newuser.username);}
-  username : string = this.user.newuser.username;
+  constructor(private service : BackApiServiceService, private user : SignInComponent) {}
+  username : string |null  = localStorage.getItem("username");
 }
 
 
