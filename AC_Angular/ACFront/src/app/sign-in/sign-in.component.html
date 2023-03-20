@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign in</title>
+    <meta name="description" content="A minimalist layout for Login pages. Built with Pico CSS.">
+    
+  </head>
+  <body>
+    <!-- Main -->
+    <main class="container">
+      
+      <article class="grid">
+      
+        <div>
+          <h3 style="color: rgb(25, 128, 168);">Sign in</h3>
+            <form [formGroup]="signinform" (ngSubmit)="validate()">
+
+              <label for="username">Username: </label>
+              <input required id="loginID" type="text" formControlName="username">
+            
+              <label for="password">Password: </label>
+              <input required id="passwordID" type="password" formControlName="password">
+              <button type="submit" [disabled]="!signinform.valid">Submit</button>
+              <span>Do you need to <a routerLink="/sign-up">Sign-up?</a></span>
+            </form>
+        
+        </div>
+        <div>
+          <img src="../../assets/sign-in-picture.jpg" alt="" style="padding-top: 5rem;">
+        </div>
+      </article>
+    </main><!-- ./ Main -->
+
+    <!-- Minimal theme switcher -->
+    <!-- <script src="../js/minimal-theme-switcher.js"></script> -->
+
+  </body>
+
+</html>

@@ -1,0 +1,34 @@
+<head>
+    <!-- Pico.css -->
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
+
+    <!-- Custom styles for this example -->
+    <link rel="stylesheet" href="get-marketplace-items.component.css">
+</head>
+ <body>
+<h1>Show Marketplace Items</h1>
+
+<button (click)="Clicked($event)">Show All Items</button>
+
+<table *ngIf="items.length > 0">
+    <thead>
+        <th>Listing ID</th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Photo</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of items">
+            <td>{{i.Id}}</td>
+            <td>{{i.Name}}</td>
+            <td>{{i.Balance}}</td>
+            <td>{{i.UnitPrice}}</td>
+            <td><img src={{i.Url}}></td>
+        </tr>
+    </tbody>
+</table>
+<p *ngIf="items.length === 0 && clicked">
+    No items to display... :(
+</p>
+</body>
