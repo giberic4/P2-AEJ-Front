@@ -25,8 +25,10 @@ export class BackApiServiceService {
     return this.http.get(newUrl);
   }
 
+
   getLogin(user : User) : Observable<boolean>{
     return this.http.post(this.apiRoot+"/login", user) as Observable<boolean>
+
   }
 
   getUserByID(id : number) {

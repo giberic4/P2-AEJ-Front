@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sign in example • Pico.css</title>
+    <title>Sign in</title>
     <meta name="description" content="A minimalist layout for Login pages. Built with Pico CSS.">
     <link rel="shortcut icon" href="https://picocss.com/favicon.ico">
     <link rel="canonical" href="https://picocss.com/examples/sign-in/">
@@ -30,7 +30,7 @@
           <hgroup>
             <h1>Sign in</h1>
           </hgroup>
-            <form [formGroup]="signinform" (ngSubmit)="login()">
+            <form [formGroup]="signinform" (ngSubmit)="validate()">
 
               <label for="username">Username: </label>
               <input required id="loginID" type="text" formControlName="username">
