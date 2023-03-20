@@ -14,11 +14,11 @@ export class SignUpComponent {
   constructor(_http: HttpClient, private service: SignUpService) {}
 
   currentUser : User2 = {
-    username : "",
-    password: "",
-    fname : "",
-    lname : "",
-    wallet : 0
+        firstName : "",
+        lastName : "",
+        username : "",
+        password : "",
+        wallet: 1000
   }
 
 signUpForm =  new FormGroup({
@@ -33,15 +33,18 @@ signin(){
   const lastN = (document.getElementById("lastname")) as HTMLInputElement;
   const uname = (document.getElementById("username")) as HTMLInputElement;
   const pwd = (document.getElementById("password")) as HTMLInputElement;
-  this.currentUser.fname = firstN.value;
+  this.currentUser.firstName = firstN.value;
   console.log("signUp first name: " + firstN.value);
-  this.currentUser.lname = lastN.value;
+  this.currentUser.lastName = lastN.value;
   console.log("signUp last name: " + lastN.value);
   this.currentUser.username = uname.value;
   console.log("signUp username: " + uname.value);
   this.currentUser.password = pwd.value;
   console.log("signUp password" + pwd.value);
+  this.currentUser.wallet = 1000;
   console.log(this.currentUser);
   this.service.createUser(this.currentUser).subscribe(data => console.log(data));
+  // if error then message
+ // if no error then go to homepage.
 }
 }
