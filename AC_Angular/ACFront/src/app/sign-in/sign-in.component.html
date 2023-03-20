@@ -15,7 +15,7 @@
       <article class="grid">
       
         <div>
-          <h3>Sign in</h3>
+          <h3 style="color: rgb(25, 128, 168);">Sign in</h3>
             <form [formGroup]="signinform" (ngSubmit)="validate()">
 
               <label for="username">Username: </label>
@@ -24,14 +24,12 @@
               <label for="password">Password: </label>
               <input required id="passwordID" type="password" formControlName="password">
               <button type="submit" [disabled]="!signinform.valid">Submit</button>
-              <span>Do you need to<a routerLink="/sign-up"> Sign-up?</a></span>
+              <span>Do you need to <a routerLink="/sign-up">Sign-up?</a></span>
             </form>
         
         </div>
         <div>
-          <img src="../../assets/alessio-soggetti-8jeWeKdygfk-unsplash-1000x1200.jpg" alt="" style="padding-top: 5rem;">
-            <!-- <img *ngIf="display" [src] = "url" alt = "showImage">
-             <button (click) = "display = !display" >Toggle Image</button> -->
+          <img src="../../assets/sign-in-picture.jpg" alt="" style="padding-top: 5rem;">
         </div>
       </article>
     </main><!-- ./ Main -->
