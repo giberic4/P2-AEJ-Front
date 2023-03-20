@@ -3,7 +3,7 @@
 
 <title>Sign up</title>
 <h2>Account Creation!</h2>
-<form [formGroup] = "signUpForm">
+<form [formGroup] = "signUpForm" (ngSubmit)="signin()">
 
     <!-- Grid -->
     <div class="grid">
