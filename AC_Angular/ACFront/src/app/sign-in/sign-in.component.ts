@@ -1,20 +1,21 @@
 import { Component } from '@angular/core';
 import { User } from '../models/user';
 import {HttpClient} from '@angular/common/http'
-import { getLocaleDayNames } from '@angular/common';
+import { getLocaleDayNames, NgIf } from '@angular/common';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { BackApiServiceService } from '../back-api-service.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css']
+  styleUrls: ['../app.component.css']
 })
 export class SignInComponent {
 
   
-constructor(_http: HttpClient, private service : BackApiServiceService){}
+constructor(_http: HttpClient, private service : BackApiServiceService, private router : Router){}
+
 newuser : User = 
 {
   username :  "",
@@ -23,6 +24,7 @@ newuser : User =
   lname : "",
   wallet : 0
 }
+
 
 signinform = new FormGroup({
   username: new FormControl(''),
@@ -41,16 +43,22 @@ validate()
 
 }
 
+user0 : boolean = false;
 
 login(u : string, p : string){
 
+  let routeID : number = 0;
   this.newuser.username = u;
   console.log("username in login : " + u)
   this.newuser.password = p;
   console.log("password in login : " + p)
   console.log(this.newuser);
-  this.service.getLogin(this.newuser).subscribe(data => console.log(data));
-
+  this.service.getLogin(this.newuser).subscribe(data => routeID = data);
+  if (routeID == 0){
+  this.user0 = true;  
+  }
+  
+  this.router.navigateByUrl(`user-home/${routeID}`);
 
 }
 

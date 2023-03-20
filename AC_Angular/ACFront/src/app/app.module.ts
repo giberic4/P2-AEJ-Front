@@ -6,12 +6,18 @@ import { AppComponent } from './app.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { GetAUsersItemsComponent } from './get-a-users-items/get-a-users-items.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserHomeComponent } from './user-home/user-home.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
-    GetAUsersItemsComponent
+    GetAUsersItemsComponent,
+    UserHomeComponent,
+    HomePageComponent,
+    NavigationBarComponent
   ],
   imports: [
     BrowserModule,
