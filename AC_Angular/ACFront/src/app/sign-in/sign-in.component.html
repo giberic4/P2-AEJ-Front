@@ -23,6 +23,7 @@
             
               <label for="password">Password: </label>
               <input required id="passwordID" type="password" formControlName="password">
+              <!-- <button type="submit" [disabled]="!signinform.valid" *ngIf="s!=null" [routerLink]="s ? ['/user-profile/username'] : []">Submit</button> -->
               <button type="submit" [disabled]="!signinform.valid">Submit</button>
               <span>Do you need to <a routerLink="/sign-up">Sign-up?</a></span>
             </form>
