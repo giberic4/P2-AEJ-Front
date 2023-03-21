@@ -34,7 +34,7 @@ export class BackApiServiceService {
 
 
 
-  getLogin(user : User) : Observable<number>{
+  getLogin(user : User) : Observable<boolean>{
     // const httpOptions = {
     //   headers: new HttpHeaders({
     //     'accept' : 'text/plain', 
@@ -43,7 +43,7 @@ export class BackApiServiceService {
     // };
 
 
-    return this.http.post(this.apiRoot2, user) as Observable<number>
+    return this.http.post(this.apiRoot2, user) as Observable<boolean>
   }
 
 

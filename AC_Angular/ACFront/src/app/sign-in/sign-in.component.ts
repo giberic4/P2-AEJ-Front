@@ -50,8 +50,16 @@ login(u : string, p : string){
   this.newuser.password = p;
   console.log("password in login : " + p)
   console.log(this.newuser);
-  this.service.getLogin(this.newuser).subscribe(data => console.log(data));
-  this.router.navigateByUrl('')
+  this.service.getLogin(this.newuser).subscribe(data => {
+    if (data === false){
+      alert("invalid username/password combination!");
+    }
+    if (data === true ){
+      alert("success!");
+    }
+    console.log(data);
+  });
+  this.router.navigateByUrl('');
 
 }
 
