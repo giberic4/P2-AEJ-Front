@@ -30,6 +30,10 @@ newuser : User =
   wallet : 0
 }
 
+id : string = "Id";
+wallet : string = "Wallet";
+fname : string = "Firstname";
+lname : string = "Lastname";
 
 signinform = new FormGroup({
   username: new FormControl(''),
@@ -49,6 +53,7 @@ validate()
 }
 
 user0 : boolean = false;
+s : string | null = "";
 
 login(u : string, p : string){
 
@@ -58,13 +63,27 @@ login(u : string, p : string){
   this.newuser.password = p;
   console.log("password in login : " + p)
   console.log(this.newuser);
+
+  this.service.getUserByUsername(this.newuser.username).subscribe(data => {
+    console.log(Object.values(data));
+    this.newuser.id=Object.values(data)[0];
+    this.newuser.fname=Object.values(data)[1];
+    this.newuser.lname=Object.values(data)[2];
+    this.newuser.wallet=Object.values(data)[5];
+    localStorage.setItem("id", String(this.newuser.id));
+    this.s=localStorage.getItem("username");
+    console.log(this.s);
+    localStorage.setItem('fname', this.newuser.fname);
+    localStorage.setItem('lname', this.newuser.lname);
+    localStorage.setItem('wallet', String(this.newuser.wallet));
+    console.log(this.newuser.fname);
+  });
+
   this.service.getLogin(this.newuser).subscribe(data => {
-    if (data===true)
-      this.router.navigate([`/user-profile/${this.newuser.username}`]);
-      localStorage.setItem('username', this.newuser.username);
-      console.log(this.newuser.username)
-    });
-
+    if (data===true) {   
+        localStorage.setItem('username', this.newuser.username);
+        this.router.navigate([`/user-profile/${this.newuser.username}`]);
+    }
+  });
 }
-
 }
