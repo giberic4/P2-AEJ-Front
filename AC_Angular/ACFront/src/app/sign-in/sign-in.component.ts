@@ -63,7 +63,9 @@ login(u : string, p : string){
   this.service.getLogin(this.newuser).subscribe(data => {
     if (data===true)
       this.router.navigate([`/user-profile/${this.newuser.username}`]);
-  });
+      localStorage.setItem('username', this.newuser.username);
+    });
+
 }
 
 }

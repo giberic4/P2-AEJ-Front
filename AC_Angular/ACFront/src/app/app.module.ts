@@ -7,7 +7,6 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { GetAUsersItemsComponent } from './get-a-users-items/get-a-users-items.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
@@ -17,12 +16,12 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
-    SignUpComponent
+    SignUpComponent,
     SignInComponent,
     GetAUsersItemsComponent,
     UserHomeComponent,
     HomePageComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
     GetMarketplaceItemsComponent,
     UserProfileComponent
   ],
