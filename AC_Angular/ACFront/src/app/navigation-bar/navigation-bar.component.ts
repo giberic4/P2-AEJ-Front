@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-navigation-bar',
   templateUrl: './navigation-bar.component.html',
-  styleUrls: ['./navigation-bar.component.css']
+  styleUrls: ['../../../node_modules/@picocss/pico/css/pico.classless.css']
 })
 export class NavigationBarComponent {
 
