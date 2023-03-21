@@ -38,6 +38,9 @@ signin(firstN : string, lastN : string, uname: string, pwd: string){
   this.currentUser.password = pwd;
   console.log("signUp password");
   console.log(this.currentUser);
-  this.service.createUser(this.currentUser).subscribe(data => console.log(data));
+  this.service.createUser(this.currentUser).subscribe(
+    data => console.log(data), 
+    err => console.log(alert("Username is taken"), err)
+    );
 }
 }
