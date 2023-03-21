@@ -1,3 +1,20 @@
 
-<app-sign-up><app-sign-up/>
-<router-outlet></router-outlet>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign in</title>
+    <meta name="description" content="A minimalist layout for Login pages. Built with Pico CSS.">
+    <link rel="shortcut icon" href="https://picocss.com/favicon.ico">
+
+    <!-- Custom styles for this example -->
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
+    
+  </head>
+      <app-get-marketplace-items></app-get-marketplace-items>
+      <li><a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Sign-In Component</a></li>
+      <li><a routerLink="/user-items" routerLinkActive="active" ariaCurrentWhenActive="page">Get User Items Component</a></li>
+      <app-navigation-bar></app-navigation-bar>
+      <router-outlet></router-outlet>
+      <app-sign-up><app-sign-up/>
+
