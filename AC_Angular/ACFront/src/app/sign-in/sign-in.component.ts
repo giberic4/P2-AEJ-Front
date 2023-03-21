@@ -58,7 +58,6 @@ login(u : string, p : string){
   this.newuser.password = p;
   console.log("password in login : " + p)
   console.log(this.newuser);
-  //this.service.getLogin(this.newuser).subscribe(data => routeID = data);
   this.service.getLogin(this.newuser).subscribe(data => {
     if (data===true)
       this.router.navigate([`/user-profile/${this.newuser.username}`]);
