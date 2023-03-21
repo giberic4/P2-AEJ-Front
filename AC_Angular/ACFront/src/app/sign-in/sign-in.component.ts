@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['../app.component.css']
+  styleUrls: ['../../../node_modules/@picocss/pico/css/pico.classless.css']
 })
 
 @Injectable({
@@ -63,8 +63,6 @@ login(u : string, p : string){
   this.newuser.password = p;
   console.log("password in login : " + p)
   console.log(this.newuser);
-  //this.service.getLogin(this.newuser).subscribe(data => routeID = data);
-  
 
   this.service.getUserByUsername(this.newuser.username).subscribe(data => {
     console.log(Object.values(data));

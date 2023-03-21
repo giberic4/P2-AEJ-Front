@@ -1,14 +1,11 @@
 <head>
-    <!-- Pico.css -->
-    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
-
-    <!-- Custom styles for this example -->
-    <link rel="stylesheet" href="get-marketplace-items.component.css">
 </head>
  <body>
 <h1>Show Marketplace Items</h1>
 
-<button (click)="Clicked($event)">Show All Items</button>
+<label for="itemname">Item Name<span class="required">*</span></label>
+<input id ="itemsearch" type="text" name="itemname">
+<button (click)="SearchClicked($event)">Search An Item</button>
 
 <table *ngIf="items.length > 0">
     <thead>
