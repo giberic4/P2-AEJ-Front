@@ -1,8 +1,8 @@
 export interface User2 {
-    id? : number,
-    fname : string, 
-    lname: string,
-    username: string,
-    password: string,
-    wallet: number
-}
+        firstName: string,
+        lastName: string,
+        username: string,
+        password: string,
+        wallet: 1000
+      }
+

@@ -6,7 +6,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { UserHomeComponent } from './user-home/user-home.component';
 import {GetMarketplaceItemsComponent} from './get-marketplace-items/get-marketplace-items.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
-
+import { SignUpComponent } from './sign-up/sign-up.component';
 const routes: Routes = [
 
 
@@ -30,6 +30,11 @@ component : SignInComponent
 {
 path : 'user-items',
 component : GetAUsersItemsComponent
+
+},
+{
+  path: 'sign-up',
+  component : SignUpComponent,
 
 },
   { path: 'marketplace', component: GetMarketplaceItemsComponent },
