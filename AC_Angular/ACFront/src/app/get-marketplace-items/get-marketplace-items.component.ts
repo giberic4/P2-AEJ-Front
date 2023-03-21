@@ -7,38 +7,40 @@ import { BackApiServiceService } from '../back-api-service.service';
   templateUrl: './get-marketplace-items.component.html',
   styleUrls: ['./get-marketplace-items.component.css']
 })
-export class GetMarketplaceItemsComponent {
+export class GetMarketplaceItemsComponent implements OnInit {
 
   constructor(private api: BackApiServiceService) { }
   items : any [] = [];
   
-  // getItemForm : FormGroup = new FormGroup({
-  //   userID : new FormControl('', [Validators.required, Validators.maxLength(256)]),
-  // })
+  ngOnInit(): void {
+    console.log("dd");
+    this.api.getMarketplaceItems().subscribe(data => {
+      this.items=data as any;
+  });
+}
 
-  // id : any;
-  // n : string = "Username";
   clicked : boolean = false;
+  
 
-
-  Clicked(e: Event) {
-    this.clicked=true;
-    e.preventDefault();
-    // console.log(this.getItemForm);
-
-    // this.api.getAllUserItems1().subscribe(data => console.log(data));
-    // if(this.getItemForm.valid) {
-      // console.log(this.getItemForm.controls['userID'].value);
-      this.api.getMarketplaceItems().subscribe(data => {
-        console.log(data);
+  SearchClicked(e: Event) {
+    if ((document.getElementById("itemsearch") as HTMLInputElement).value != null)
+      console.log("@@");
+      this.api.getMarketplaceItemsByName((document.getElementById("itemsearch") as HTMLInputElement).value).subscribe(data => {
         this.items=data as any;
-        // this.id=data[this.n as keyof typeof data];
-        console.log(this.items);
       });
-      // this.api.getAllUserItems(this.getItemForm.controls['userID'].value).subscribe(data => {
-      //   this.items=data as any;
-      //   console.log(this.items);
-      // });
-    // }
+     
+    // if (this.itemname != null)
+    //   console.log("@@");
+    // this.clicked=true;
+    // e.preventDefault();
+    
+    // this.api.getMarketplaceItems().subscribe(data => {
+    //   this.items=data as any;
+    // });
+    //   this.api.getMarketplaceItems().subscribe(data => {
+    //     console.log(data);
+    //     this.items=data as any;
+    //     console.log(this.items);
+    //   });
   }
 }

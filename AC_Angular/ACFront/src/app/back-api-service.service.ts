@@ -44,4 +44,9 @@ export class BackApiServiceService {
   getMarketplaceItems(){
     return this.http.get(this.apiRoot+"/marketplace");
   }
+
+  getMarketplaceItemsByName(searchitem : string){
+    let newUrl=this.apiRoot+`/marketplaceByName?searchitem=${searchitem}`;
+    return this.http.get(newUrl);
+  }
 }
