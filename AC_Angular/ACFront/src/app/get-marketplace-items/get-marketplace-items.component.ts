@@ -5,7 +5,7 @@ import { BackApiServiceService } from '../back-api-service.service';
 @Component({
   selector: 'app-get-marketplace-items',
   templateUrl: './get-marketplace-items.component.html',
-  styleUrls: ['./get-marketplace-items.component.css']
+  styleUrls: ['../../../node_modules/@picocss/pico/css/pico.classless.css']
 })
 export class GetMarketplaceItemsComponent {
 

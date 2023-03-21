@@ -7,7 +7,7 @@ import { SignUpService } from '../sign-up.service';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  styleUrls: ['../../../node_modules/@picocss/pico/css/pico.classless.css']
 })
 export class SignUpComponent {
 

@@ -5,7 +5,7 @@ import { SignInComponent } from '../sign-in/sign-in.component';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.css']
+  styleUrls: ['../../../node_modules/@picocss/pico/css/pico.classless.css']
 })
 export class UserProfileComponent {
   constructor(private service : BackApiServiceService, private user : SignInComponent) {}
