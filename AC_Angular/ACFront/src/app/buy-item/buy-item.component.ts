@@ -1,5 +1,6 @@
 import { Component, OnChanges } from '@angular/core';
 import { Item } from '../models/item';
+import { Misc } from '../models/misc';
 import { BackApiServiceService } from '../back-api-service.service';
 @Component({
   selector: 'app-buy-item',
@@ -45,16 +46,19 @@ export class BuyItemComponent {
     item_id : 0,
     seller_id : 0
   } 
-  arr : any[] = [];
+  misc : Misc = {
+    listingId : 0,
+    quantity : 0,
+    buyerId : 0
+  }
   PutOrder(e : Event) {
   
-  this.item.id=this.buyID;
-  this.item.quantity=this.input;
-  this.item.buyer_id=this.buyer_id;
-  this.item.price=this.buyPrice;
-  this.arr = [this.item.id,this.item.quantity,this.item.buyer_id];
-  console.log(this.arr);
-  this.api.BuyItem(this.arr);
+  this.misc.listingId=this.buyID;
+  this.misc.quantity=this.input;
+  this.misc.buyerId=this.buyer_id;
+  this.api.BuyItem(this.misc).subscribe((data : any) => {
+    console.log(data);
+  });
 
   //   this.api.GetSellerAndItemIdByListingId(this.buyID).subscribe(data => {
   //     this.item.id=this.buyID;
