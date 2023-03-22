@@ -1,5 +1,6 @@
 import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormArray} from '@angular/forms';
+import { Route, Router } from '@angular/router';
 import { BackApiServiceService } from '../back-api-service.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { BackApiServiceService } from '../back-api-service.service';
 })
 export class GetMarketplaceItemsComponent implements OnInit {
 
-  constructor(private api: BackApiServiceService) { }
+  constructor(private api: BackApiServiceService, private router : Router) { }
   items : any [] = [];
   
   ngOnInit(): void {
@@ -24,23 +25,23 @@ export class GetMarketplaceItemsComponent implements OnInit {
 
   SearchClicked(e: Event) {
     if ((document.getElementById("itemsearch") as HTMLInputElement).value != null)
-      console.log("@@");
       this.api.getMarketplaceItemsByName((document.getElementById("itemsearch") as HTMLInputElement).value).subscribe(data => {
         this.items=data as any;
       });
-     
-    // if (this.itemname != null)
-    //   console.log("@@");
-    // this.clicked=true;
-    // e.preventDefault();
-    
-    // this.api.getMarketplaceItems().subscribe(data => {
-    //   this.items=data as any;
-    // });
-    //   this.api.getMarketplaceItems().subscribe(data => {
-    //     console.log(data);
-    //     this.items=data as any;
-    //     console.log(this.items);
-    //   });
   }
+
+  BuyItem(e: Event) {
+   
+      var clickedElement = <HTMLElement>e.target;
+      var clickedRow = clickedElement.parentElement?.parentElement?.innerText;
+      localStorage.setItem('buyID', clickedRow?.split("\t")[0]!);
+      localStorage.setItem('buyName', clickedRow?.split("\t")[1]!);
+      localStorage.setItem('buyAvailable', clickedRow?.split("\t")[2]!);
+      localStorage.setItem('buyPrice', clickedRow?.split("\t")[3]!);
+      localStorage.setItem('buyPhoto', document.querySelector("img")?.getAttribute('src')!);
+     
+      this.router.navigate([`/marketplace/buy`]);
+  }
+
+  
 }
