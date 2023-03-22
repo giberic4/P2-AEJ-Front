@@ -13,6 +13,7 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { GetMarketplaceItemsComponent } from './get-marketplace-items/get-marketplace-items.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { BuyItemComponent } from './buy-item/buy-item.component';
+import { AllItemsComponent } from './all-items/all-items.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { BuyItemComponent } from './buy-item/buy-item.component';
     GetMarketplaceItemsComponent,
     UserProfileComponent,
     BuyItemComponent
+    AllItemsComponent
   ],
   imports: [
     BrowserModule,
