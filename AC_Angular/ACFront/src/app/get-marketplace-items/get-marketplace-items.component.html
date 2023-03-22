@@ -14,6 +14,7 @@
         <th>Quantity</th>
         <th>Price</th>
         <th>Photo</th>
+        <th></th>
     </thead>
     <tbody>
         <tr *ngFor="let i of items">
@@ -22,6 +23,7 @@
             <td>{{i.Balance}}</td>
             <td>{{i.UnitPrice}}</td>
             <td><img src={{i.Url}}></td>
+            <td><button id={{i.Id}} (click)="BuyItem($event)">Buy</button></td>
         </tr>
     </tbody>
 </table>

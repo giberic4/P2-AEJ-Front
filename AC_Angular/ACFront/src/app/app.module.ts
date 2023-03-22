@@ -12,6 +12,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { GetMarketplaceItemsComponent } from './get-marketplace-items/get-marketplace-items.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { BuyItemComponent } from './buy-item/buy-item.component';
 import { AllItemsComponent } from './all-items/all-items.component';
 
 @NgModule({
@@ -25,6 +26,7 @@ import { AllItemsComponent } from './all-items/all-items.component';
     NavigationBarComponent,
     GetMarketplaceItemsComponent,
     UserProfileComponent,
+    BuyItemComponent
     AllItemsComponent
   ],
   imports: [

@@ -1,0 +1,59 @@
+<div class="split left">
+    <div class="left">
+<h2>Checkout</h2> 
+<img src={{buyPhoto}} style="border : 6px solid rgb(65, 132, 187)" width="150px" height="150">
+
+<h6><br>Item details</h6>
+<table>
+  <tbody>
+      <tr>
+          <th>Listing ID: </th>
+          <td>{{buyID}}</td>
+      </tr>
+      <tr>
+          <th>Name: </th>
+          <td>{{buyName}}</td>
+      </tr>
+      <tr>
+          <th>Availability: </th>
+          <td>{{buyAvailable}}</td>
+      </tr>
+      <tr>
+          <th>Price: </th>
+          <td>{{buyPrice}}</td>
+      </tr> 
+  </tbody>
+</table>
+</div>
+</div>
+
+<div class="split1 right">
+    <div class="centered">
+
+<label for="selectquantity">How many do you want to buy<span class="required">*</span></label>
+<input id ="selectquantity" type="number" name="selectquantity" (keyup)="Calculate($event)" (keyup)="Validate()" max=Validate()>
+<!-- <span class="validity"></span> -->
+
+<table *ngIf="input>0 && input<=buyAvailable">
+    <h6><br>Summary</h6>
+    <tbody>
+        <tr>
+            <th>Unit Price: </th>
+            <td>{{buyPrice}}</td>
+        </tr>
+        <tr>
+            <th>Quantity: </th>
+            <td>{{input}}</td>
+        </tr>
+        <tr>
+            <th>Total Price: </th>
+            <td>{{totalSum}}</td>
+        </tr> 
+    </tbody>
+    <span *ngIf="totalSum>wallet" style="color : red"><br>You don't have enough funds to buy these quantity</span>
+</table>
+
+<button (click)="PutOrder($event)">Checkout</button>
+</div>
+</div>
+
