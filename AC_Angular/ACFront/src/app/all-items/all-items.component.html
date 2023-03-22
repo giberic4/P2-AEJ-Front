@@ -1,0 +1,21 @@
+<body>
+<h1>Get All Items</h1>
+<form (submit)="processForm($event)" [formGroup]="AllItemForm">
+    <input type="submit" role="button" value="Show Items">
+</form>
+<table *ngIf="items.length > 0">
+    <thead>
+        <th>Name</th>
+        <th>Photo</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of items1">
+            <td>{{i.iname}}</td>
+            <td><img src={{i.iurl}} height="100" width="100"></td>
+        </tr>
+    </tbody>
+</table>
+<p *ngIf="items1.length === 0 && clicked">
+    No items to display... :(
+</p>
+</body>
