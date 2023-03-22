@@ -56,7 +56,7 @@ export class BackApiServiceService {
   }
 
   BuyItem(arr : number[]){
-    this.http.post("http://localhost:5144/marketplace/buy/checkout", arr);
+    this.http.post("http://localhost:5144/store/buy",arr);
     console.log(arr);
   }
 }

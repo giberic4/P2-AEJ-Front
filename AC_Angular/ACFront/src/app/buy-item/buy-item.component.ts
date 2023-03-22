@@ -47,19 +47,26 @@ export class BuyItemComponent {
   } 
   arr : any[] = [];
   PutOrder(e : Event) {
-    
+  
+  this.item.id=this.buyID;
+  this.item.quantity=this.input;
+  this.item.buyer_id=this.buyer_id;
+  this.item.price=this.buyPrice;
+  this.arr = [this.item.id,this.item.quantity,this.item.buyer_id];
+  console.log(this.arr);
+  this.api.BuyItem(this.arr);
 
-    this.api.GetSellerAndItemIdByListingId(this.buyID).subscribe(data => {
-      this.item.id=this.buyID;
-      this.item.quantity=this.input;
-      this.item.buyer_id=this.buyer_id;
-      this.item.price=this.buyPrice;
-      this.item.seller_id=(data as Array<number>)[0];
-      this.item.item_id=(data as Array<number>)[1];
-      this.arr = [this.item.id,this.item.quantity,this.item.buyer_id,this.item.price,this.item.item_id,this.item.seller_id];
-      console.log(this.arr);
-      this.api.BuyItem(this.arr);
-  });
+  //   this.api.GetSellerAndItemIdByListingId(this.buyID).subscribe(data => {
+  //     this.item.id=this.buyID;
+  //     this.item.quantity=this.input;
+  //     this.item.buyer_id=this.buyer_id;
+  //     this.item.price=this.buyPrice;
+  //     this.item.seller_id=(data as Array<number>)[0];
+  //     this.item.item_id=(data as Array<number>)[1];
+  //     this.arr = [this.item.id,this.item.quantity,this.item.buyer_id];
+  //     console.log(this.arr);
+  //     this.api.BuyItem(this.arr);
+  // });
     
   }
 }
