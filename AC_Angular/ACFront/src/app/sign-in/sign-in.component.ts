@@ -7,6 +7,7 @@ import { BackApiServiceService } from '../back-api-service.service';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 
+
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -27,6 +28,7 @@ newuser : User =
   password : "",
   fname : "",
   lname : "",
+  email : "",
   wallet : 0
 }
 
@@ -63,6 +65,17 @@ login(u : string, p : string){
   this.newuser.password = p;
   console.log("password in login : " + p)
   console.log(this.newuser);
+
+  this.service.getLogin(this.newuser).subscribe(data => {
+    if (data === false){
+      alert("invalid username/password combination!");
+    }
+    if (data === true ){
+      alert("success!");
+    }
+    console.log(data);
+  });
+  this.router.navigateByUrl('');
 
   this.service.getUserByUsername(this.newuser.username).subscribe(data => {
     console.log(Object.values(data));

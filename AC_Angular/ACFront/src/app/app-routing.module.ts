@@ -11,6 +11,11 @@ import { BuyItemComponent } from './buy-item/buy-item.component';
 import { AllItemsComponent } from './all-items/all-items.component';
 
 const routes: Routes = [
+
+{path: 'users-items/{id}',
+ component : GetAUsersItemsComponent 
+}
+
 {path : '',component : SignInComponent},
 {path: 'user-home/', component : UserHomeComponent},
 {path: 'home-page',  component : HomePageComponent},
@@ -21,6 +26,7 @@ const routes: Routes = [
 {path: 'user-profile/:id', component: UserProfileComponent },
 {path: 'allitems', component : AllItemsComponent},
 {path: 'marketplace/:id', component: BuyItemComponent }
+
 ];
 
 @NgModule({

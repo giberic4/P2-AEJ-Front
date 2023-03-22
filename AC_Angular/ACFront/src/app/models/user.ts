@@ -4,5 +4,6 @@ export interface User {
     lname: string,
     username: string,
     password: string,
+    email: string,
     wallet: number
 }
