@@ -1,3 +1,4 @@
+
 /* Grid */
 body > main {
     display: flex;
@@ -65,9 +66,11 @@ body > main {
   /* Hero Image */
   article div:nth-of-type(2) {
     display: none;
-    background-color: transparent;
-    background-image: url("src/assets/alessio-soggetti-8jeWeKdygfk-unsplash-1000x1200.jpg");
-    background-position: center center;
+    background-color: none;
+    background-image: url("src/assets/sign-in-picture.jpg");
+    height: 500px;
+    width: 500px;
+    background-position: center;
     background-size: contain;
   }
   

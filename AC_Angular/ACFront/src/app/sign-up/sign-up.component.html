@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang = "en">
+
+<title>Sign up</title>
+<h2>Account Creation!</h2>
+<form [formGroup] = "signUpForm" (ngSubmit)="signin()">
+
+    <!-- Grid -->
+    <div class="grid">
+
+    <!-- Markup example 1: input is inside label -->
+    <label for="firstname">
+        First name
+        <input type="text" id="firstname" formControlName="fname" placeholder="First name" required>
+    </label>
+
+    <label for="lastname">
+        Last name
+        <input type="text" id="lastname" formControlName="lname" placeholder="Last name" required>
+    </label>
+
+    </div>  
+
+    <div class = "grid">
+    <label for="username">
+        Username
+        <input type="text" id="username" formControlName="username" placeholder="Username" required>
+    </label>
+
+    <label for="password">
+        Password
+        <input type="password" id="password" formControlName="password" placeholder="password" required>
+    </label>
+
+    </div>
+
+    <!-- Button -->
+    <button type="submit" [disabled]="!signUpForm.valid">Submit</button>
+    
+</form>
+
+</html>
