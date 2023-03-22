@@ -49,4 +49,14 @@ export class BackApiServiceService {
     let newUrl=this.apiRoot+`/marketplaceByName?searchitem=${searchitem}`;
     return this.http.get(newUrl);
   }
+
+  GetSellerAndItemIdByListingId(listing_id : number){
+    let newUrl=this.apiRoot+`/sellerIDitemID?listing_id=${listing_id}`;
+    return this.http.get(newUrl);
+  }
+
+  BuyItem(arr : number[]){
+    this.http.post("http://localhost:5144/marketplace/buy/checkout", arr);
+    console.log(arr);
+  }
 }

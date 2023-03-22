@@ -69,19 +69,16 @@ login(u : string, p : string){
     this.newuser.id=Object.values(data)[0];
     this.newuser.fname=Object.values(data)[1];
     this.newuser.lname=Object.values(data)[2];
-    this.newuser.wallet=Object.values(data)[5];
-    localStorage.setItem("id", String(this.newuser.id));
-    this.s=localStorage.getItem("username");
-    console.log(this.s);
-    localStorage.setItem('fname', this.newuser.fname);
-    localStorage.setItem('lname', this.newuser.lname);
-    localStorage.setItem('wallet', String(this.newuser.wallet));
-    console.log(this.newuser.fname);
+    this.newuser.wallet=Object.values(data)[6];
   });
 
   this.service.getLogin(this.newuser).subscribe(data => {
     if (data===true) {   
         localStorage.setItem('username', this.newuser.username);
+        localStorage.setItem('fname', this.newuser.fname);
+        localStorage.setItem('lname', this.newuser.lname);
+        localStorage.setItem('wallet', String(this.newuser.wallet));
+        localStorage.setItem("id", String(this.newuser.id));
         this.router.navigate([`/user-profile/${this.newuser.username}`]);
     }
   });

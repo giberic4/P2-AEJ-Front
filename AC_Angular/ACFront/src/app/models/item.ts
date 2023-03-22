@@ -1,7 +1,10 @@
 export interface Item {
     id? : number,
-    name : string,
-    balance : number
+    quantity : number,
+    buyer_id : number,
+    price : number,
+    item_id : number,
+    seller_id : number
 }
 
 export interface itemforallitems{

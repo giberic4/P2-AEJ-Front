@@ -18,10 +18,7 @@ export class GetMarketplaceItemsComponent implements OnInit {
     this.api.getMarketplaceItems().subscribe(data => {
       this.items=data as any;
   });
-}
-
-  clicked : boolean = false;
-  
+}  
 
   SearchClicked(e: Event) {
     if ((document.getElementById("itemsearch") as HTMLInputElement).value != null)
@@ -38,8 +35,8 @@ export class GetMarketplaceItemsComponent implements OnInit {
       localStorage.setItem('buyName', clickedRow?.split("\t")[1]!);
       localStorage.setItem('buyAvailable', clickedRow?.split("\t")[2]!);
       localStorage.setItem('buyPrice', clickedRow?.split("\t")[3]!);
-      localStorage.setItem('buyPhoto', document.querySelector("img")?.getAttribute('src')!);
-     
+      localStorage.setItem('buyPhoto', clickedElement.parentElement?.parentElement?.querySelector("img")?.getAttribute('src')!);
+      
       this.router.navigate([`/marketplace/buy`]);
   }
 
