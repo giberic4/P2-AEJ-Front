@@ -36,7 +36,17 @@ export class BackApiServiceService {
     return this.http.get(newUrl);
   }
 
+  getUserByUsername(username : string) {
+    let newUrl=this.apiRoot+`/user1?username=${username}`;
+    return this.http.get(newUrl);
+  }
+
   getMarketplaceItems(){
     return this.http.get(this.apiRoot+"/marketplace");
+  }
+
+  getMarketplaceItemsByName(searchitem : string){
+    let newUrl=this.apiRoot+`/marketplaceByName?searchitem=${searchitem}`;
+    return this.http.get(newUrl);
   }
 }
