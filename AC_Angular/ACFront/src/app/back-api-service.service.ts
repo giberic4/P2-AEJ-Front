@@ -5,7 +5,7 @@ import { catchError, retry } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 import {HttpParams} from "@angular/common/http";
 import { User } from './models/user';
-import { Item } from './models/item';
+import { Misc } from './models/misc';
 
 
 @Injectable({
@@ -55,8 +55,13 @@ export class BackApiServiceService {
     return this.http.get(newUrl);
   }
 
-  BuyItem(arr : number[]){
-    this.http.post("http://localhost:5144/store/buy",arr);
-    console.log(arr);
+  BuyItem(misc : Misc) : Observable<any>{
+    
+    let arr4 = [1002,1,1]
+    let item  = {
+      arr : [1002,1,1]
+    }
+    return this.http.post("http://localhost:5144/store/buy",misc) as Observable<any>;
+    console.log("!!!!!!!!",misc);
   }
 }
