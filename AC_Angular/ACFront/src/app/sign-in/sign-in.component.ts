@@ -22,6 +22,7 @@ newuser : User =
   password : "",
   fname : "",
   lname : "",
+  email : "",
   wallet : 0
 }
 
