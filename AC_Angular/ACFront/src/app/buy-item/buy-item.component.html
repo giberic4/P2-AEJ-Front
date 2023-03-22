@@ -22,6 +22,10 @@
           <th>Price: </th>
           <td>{{buyPrice}}</td>
       </tr> 
+      <tr>
+          <th>Wallet: </th>
+          <td>{{wallet}}</td>
+      </tr> 
   </tbody>
 </table>
 </div>
@@ -31,7 +35,7 @@
     <div class="centered">
 
 <label for="selectquantity">How many do you want to buy<span class="required">*</span></label>
-<input id ="selectquantity" type="number" name="selectquantity" (keyup)="Calculate($event)" (keyup)="Validate()" max=Validate()>
+<input id ="selectquantity" type="number" name="selectquantity" (keyup)="Calculate($event)" (keyup)="Validate()" (change)="Validate()">
 <!-- <span class="validity"></span> -->
 
 <table *ngIf="input>0 && input<=buyAvailable">
@@ -50,9 +54,8 @@
             <td>{{totalSum}}</td>
         </tr> 
     </tbody>
-    <span *ngIf="totalSum>wallet" style="color : red"><br>You don't have enough funds to buy these quantity</span>
 </table>
-
+<p *ngIf="totalSum>wallet" style="color : red"><br>You don't have enough funds to buy these quantity</p>
 <button (click)="PutOrder($event)">Checkout</button>
 </div>
 </div>

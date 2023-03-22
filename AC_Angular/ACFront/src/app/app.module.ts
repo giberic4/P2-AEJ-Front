@@ -26,7 +26,7 @@ import { AllItemsComponent } from './all-items/all-items.component';
     NavigationBarComponent,
     GetMarketplaceItemsComponent,
     UserProfileComponent,
-    BuyItemComponent
+    BuyItemComponent,
     AllItemsComponent
   ],
   imports: [
