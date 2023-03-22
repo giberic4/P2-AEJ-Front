@@ -10,13 +10,13 @@ import { BackApiServiceService } from '../back-api-service.service';
 export class BuyItemComponent {
   constructor(private api: BackApiServiceService) {}
 
-  buyID : number = parseInt(localStorage.getItem('buyID')!);
-  buyName : string = localStorage.getItem('buyName')!;
-  buyAvailable : number = parseInt(localStorage.getItem('buyAvailable')!);
-  buyPrice : number = parseInt(localStorage.getItem('buyPrice')!);
-  buyPhoto : string = localStorage.getItem('buyPhoto')!;
-  wallet : number = parseInt(localStorage.getItem("wallet")!);
-  buyer_id : number = parseInt(localStorage.getItem("id")!);
+  buyID : number = parseInt(sessionStorage.getItem('buyID')!);
+  buyName : string = sessionStorage.getItem('buyName')!;
+  buyAvailable : number = parseInt(sessionStorage.getItem('buyAvailable')!);
+  buyPrice : number = parseInt(sessionStorage.getItem('buyPrice')!);
+  buyPhoto : string = sessionStorage.getItem('buyPhoto')!;
+  wallet : number = parseInt(sessionStorage.getItem("wallet")!);
+  buyer_id : number = parseInt(sessionStorage.getItem("id")!);
   
   input : number = 0;
   totalSum : number = 0;
@@ -26,6 +26,8 @@ export class BuyItemComponent {
     if ((document.getElementById("selectquantity") as HTMLInputElement).value!=null) {
       this.input = parseInt((document.getElementById("selectquantity") as HTMLInputElement).value);
       this.totalSum=this.buyPrice*(this.input);
+      sessionStorage.setItem('totalprice', this.totalSum.toString());
+
     }
 
   }

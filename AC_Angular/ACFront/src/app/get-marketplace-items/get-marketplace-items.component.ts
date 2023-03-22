@@ -31,11 +31,11 @@ export class GetMarketplaceItemsComponent implements OnInit {
    
       var clickedElement = <HTMLElement>e.target;
       var clickedRow = clickedElement.parentElement?.parentElement?.innerText;
-      localStorage.setItem('buyID', clickedRow?.split("\t")[0]!);
-      localStorage.setItem('buyName', clickedRow?.split("\t")[1]!);
-      localStorage.setItem('buyAvailable', clickedRow?.split("\t")[2]!);
-      localStorage.setItem('buyPrice', clickedRow?.split("\t")[3]!);
-      localStorage.setItem('buyPhoto', clickedElement.parentElement?.parentElement?.querySelector("img")?.getAttribute('src')!);
+      sessionStorage.setItem('buyID', clickedRow?.split("\t")[0]!);
+      sessionStorage.setItem('buyName', clickedRow?.split("\t")[1]!);
+      sessionStorage.setItem('buyAvailable', clickedRow?.split("\t")[2]!);
+      sessionStorage.setItem('buyPrice', clickedRow?.split("\t")[3]!);
+      sessionStorage.setItem('buyPhoto', clickedElement.parentElement?.parentElement?.querySelector("img")?.getAttribute('src')!);
       
       this.router.navigate([`/marketplace/buy`]);
   }

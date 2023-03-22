@@ -27,7 +27,7 @@ export class BackApiServiceService {
 
 
   getLogin(user : User) : Observable<boolean>{
-    return this.http.post(this.apiRoot+"/login", user) as Observable<boolean>
+    return this.http.post(this.apiRoot+"/login", user) as Observable<boolean>}
 
 
   getUserByID(id : number) {
@@ -55,12 +55,11 @@ export class BackApiServiceService {
   }
 
   BuyItem(misc : Misc) : Observable<any>{
-    
-    let arr4 = [1002,1,1]
-    let item  = {
-      arr : [1002,1,1]
-    }
+    let sum = parseInt(sessionStorage.getItem('totalprice')!)
+    let  wallet  =  parseInt(sessionStorage.getItem('wallet')!)
+    sessionStorage.setItem('wallet', (wallet - sum).toString())
+
+    // sessionStorage.setItem('wallet',  )
     return this.http.post("http://localhost:5144/store/buy",misc) as Observable<any>;
-    console.log("!!!!!!!!",misc);
   }
 }

@@ -14,7 +14,7 @@ const routes: Routes = [
 
 {path: 'users-items/{id}',
  component : GetAUsersItemsComponent 
-}
+},
 
 {path : '',component : SignInComponent},
 {path: 'user-home/', component : UserHomeComponent},
