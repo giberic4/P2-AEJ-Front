@@ -57,7 +57,7 @@ import { BackApiServiceService } from '../back-api-service.service';
     constructor(private api: BackApiServiceService) { }
     items: any[] = [];
 
-    userId = localStorage.getItem("id")!;
+    userId = sessionStorage.getItem("id")!;
     userIdInt : number = +this.userId;
     clicked : boolean = false;
 
