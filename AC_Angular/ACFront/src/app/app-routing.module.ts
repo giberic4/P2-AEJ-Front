@@ -7,38 +7,19 @@ import { UserHomeComponent } from './user-home/user-home.component';
 import {GetMarketplaceItemsComponent} from './get-marketplace-items/get-marketplace-items.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { AllItemsComponent } from './all-items/all-items.component';
 const routes: Routes = [
 
 
-{
-path : '',
-component : SignInComponent
-},
-{path: 'user-home/',
- component : UserHomeComponent, 
-},
-{
-  path: 'home-page',
-  component : HomePageComponent,
-
-},
-{
-  path: 'sign-in',
-  component : SignInComponent,
-
-},
-{
-path : 'user-items',
-component : GetAUsersItemsComponent
-
-},
-{
-  path: 'sign-up',
-  component : SignUpComponent,
-
-},
-  { path: 'marketplace', component: GetMarketplaceItemsComponent },
-  { path: 'user-profile/:id', component: UserProfileComponent }
+{path : '',component : SignInComponent},
+{path: 'user-home/', component : UserHomeComponent, },
+{path: 'home-page',  component : HomePageComponent,},
+{path: 'sign-in',  component : SignInComponent,},
+{path : 'user-items', component : GetAUsersItemsComponent},
+{path: 'sign-up', component : SignUpComponent,},
+{path: 'marketplace', component: GetMarketplaceItemsComponent },
+{path: 'user-profile/:id', component: UserProfileComponent },
+{path: 'allitems', component : AllItemsComponent}
 ];
 
 @NgModule({

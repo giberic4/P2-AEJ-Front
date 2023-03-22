@@ -1,69 +1,55 @@
-import { Component } from '@angular/core';
-
+import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormArray} from '@angular/forms';
+import { observeNotification } from 'rxjs/internal/Notification';
+import { ACAPIServiceService} from '../acapiservice.service';
+import {itemforallitems} from '../models/item'
 @Component({
   selector: 'app-all-items',
   templateUrl: './all-items.component.html',
   styleUrls: ['./all-items.component.css']
 })
-export class AllItemsComponent {
+export class AllItemsComponent{
+  constructor(private api: ACAPIServiceService) {  }
+  items : any [] = [];
+  items1 : itemforallitems[] = [];
+  i : itemforallitems  = {
+    iurl : "",
+    iname : ""
+  }
+
+  AllItemForm : FormGroup = new FormGroup({
+    itemname : new FormControl(''),
+  })
+  clicked : boolean = false;
+  Name : any;
+  Url : string = "";
+  
+
+  processForm(e: Event) {
+
+
+    this.clicked=true;
+    console.log(this.AllItemForm);
+
+      this.api.AllItems().subscribe(data => {
+        this.items=data as any;
+        this.items.forEach(element  => { 
+        this.i.iurl = element[0]['image_uri']
+        this.i.iname = element[0]['name']['name-USen']
+        this.items1.push(
+          {
+            iurl : element[0]['image_uri'],
+            iname : element[0]['name']['name-USen']
+          }
+        )
+        });
+      });
+     this.items1;
+    
+
+
+  }
+
+
 }
 
-//  getItemPic() {
-//     const response = await fetch('https://acnhapi.com/v1a/houseware/');
-//     console.log("@@@");
-//     const data = await response.json();
-//     console.log(data);
-//     console.log(countInObject(data));
-//     console.log(countInObject(data[1]));
-//     const numof = countInObject(data);
-//     let arr = [[]];
-//     console.log(arr);
-
-//     let itempicDiv : any = document.querySelector('#item-pic-container')
-    
-
-//     let ari = []
-
-//      for (let i = 0; i < numof;i++){
-//         if(data[i][0]['buy-price'] === null) continue;
-//         let itemname = document.createElement('p');
-//         itemname.id = 'item-name'
-//         itemname.className = 'name-container'
-//         let string1 = (data[i][0]['name']['name-USen'])
-//         let string2 = (data[i][0]['image_uri'])
-//         ari.push(string1 + "," + string2 )
-//         let itembuyprice = document.createElement('p');
-//         itembuyprice.id = 'item-buy-price'
-//         itembuyprice.className = 'buyprice-container'
-    
-//         let itemImg = document.createElement('img');
-//         itemImg.id = 'item-image'
-//         itemImg.className = 'image-container'
-//     itemname.innerText = data[i][0]['name']['name-USen'];
-//     itempicDiv.appendChild(itemname)
-//     itemImg.src = data[i][0].image_uri;
-//     itempicDiv.appendChild(itemImg)
-//     itembuyprice.innerText = data[i][0]['image_uri'];
-//     itempicDiv.appendChild(itembuyprice)
-
-//       } 
-//     console.log(ari)
-//     }
-// CountInObject(obj) {
-//     let count = 0;
-//     // iterate over properties, increment if a non-prototype property
-//     for(var key in obj) if(obj.hasOwnProperty(key)) count++;
-//     return count;
-// }
-
-// }
-
-// async function getAllITEMS() {
-//     const response = await fetch('https://acnhapi.com/v1/houseware/');
-//     const data = await response.json();
-
-
-// }
-
-  
-// }
