@@ -40,7 +40,7 @@ export class BuyItemComponent {
     if (this.input>this.buyAvailable)
       s.value="";  
   }
- 
+
   item : Item = {
     id : 0,
     quantity : 0,

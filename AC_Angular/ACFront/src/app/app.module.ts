@@ -37,7 +37,7 @@ import { SellItemComponent } from './sell-item/sell-item.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
