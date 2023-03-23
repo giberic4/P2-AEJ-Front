@@ -3,6 +3,7 @@ import { User2 } from '../models2/users2';
 import {HttpClient} from '@angular/common/http'
 import { FormGroup, FormControl} from '@angular/forms';
 import { SignUpService } from '../sign-up.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,7 +12,7 @@ import { SignUpService } from '../sign-up.service';
 })
 export class SignUpComponent {
 
-  constructor(_http: HttpClient, private service: SignUpService) {}
+  constructor(_http: HttpClient, private service: SignUpService, private router : Router) {}
 
   currentUser : User2 = {
         firstName : "",
@@ -43,9 +44,13 @@ signin(){
   console.log("signUp password" + pwd.value);
   this.currentUser.wallet = 1000;
   console.log(this.currentUser);
-  this.service.createUser(this.currentUser).subscribe(
-    data => console.log(data), 
-    err => console.log(alert("Username is taken"), err)
-    );
+  
+  this.service.createUser(this.currentUser).subscribe(data => {
+    err => console.log(alert("Username is taken"), err);
+    console.log(data)
+    alert(please sign in)
+    this.router.navigate([`/sign-in`]);
+  });
+
 }
 }

@@ -6,6 +6,7 @@ import { HttpHeaders } from '@angular/common/http';
 import {HttpParams} from "@angular/common/http";
 import { User } from './models/user';
 import { Misc } from './models/misc';
+import { Sellinfo } from './models/sellinfo';
 
 
 @Injectable({
@@ -63,6 +64,14 @@ export class BackApiServiceService {
     return this.http.post("http://localhost:5144/store/buy",misc) as Observable<any>;
   }
 
+  SellItem(sellinfo : Sellinfo) : Observable<any>{
+    let sum = parseInt(sessionStorage.getItem('totalprice')!)
+    let  wallet  =  parseInt(sessionStorage.getItem('wallet')!)
+    sessionStorage.setItem('wallet', (wallet).toString())
+
+    sessionStorage.setItem('wallet',  )
+    return this.http.post("http://localhost:5144/store/sell",sellinfo) as Observable<any>;
+}
   BuyRand(by_id : number) {
     console.log('in buyrandom service')
     

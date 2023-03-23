@@ -9,6 +9,7 @@ import {UserProfileComponent} from './user-profile/user-profile.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { BuyItemComponent } from './buy-item/buy-item.component';
 import { AllItemsComponent } from './all-items/all-items.component';
+import { SellItemComponent } from './sell-item/sell-item.component';
 
 const routes: Routes = [
 
@@ -25,7 +26,8 @@ const routes: Routes = [
 {path: 'marketplace', component: GetMarketplaceItemsComponent },
 {path: 'user-profile/:id', component: UserProfileComponent },
 {path: 'allitems', component : AllItemsComponent},
-{path: 'marketplace/:id', component: BuyItemComponent }
+{path: 'marketplace/buy', component: BuyItemComponent },
+{path: 'marketplace/sell', component: SellItemComponent }
 
 ];
 
