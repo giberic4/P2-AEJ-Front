@@ -1,5 +1,6 @@
 import { Component, OnChanges } from '@angular/core';
 import { Item } from '../models/item';
+import { Misc } from '../models/misc';
 import { BackApiServiceService } from '../back-api-service.service';
 @Component({
   selector: 'app-buy-item',
@@ -9,13 +10,13 @@ import { BackApiServiceService } from '../back-api-service.service';
 export class BuyItemComponent {
   constructor(private api: BackApiServiceService) {}
 
-  buyID : number = parseInt(localStorage.getItem('buyID')!);
-  buyName : string = localStorage.getItem('buyName')!;
-  buyAvailable : number = parseInt(localStorage.getItem('buyAvailable')!);
-  buyPrice : number = parseInt(localStorage.getItem('buyPrice')!);
-  buyPhoto : string = localStorage.getItem('buyPhoto')!;
-  wallet : number = parseInt(localStorage.getItem("wallet")!);
-  buyer_id : number = parseInt(localStorage.getItem("id")!);
+  buyID : number = parseInt(sessionStorage.getItem('buyID')!);
+  buyName : string = sessionStorage.getItem('buyName')!;
+  buyAvailable : number = parseInt(sessionStorage.getItem('buyAvailable')!);
+  buyPrice : number = parseInt(sessionStorage.getItem('buyPrice')!);
+  buyPhoto : string = sessionStorage.getItem('buyPhoto')!;
+  wallet : number = parseInt(sessionStorage.getItem("wallet")!);
+  buyer_id : number = parseInt(sessionStorage.getItem("id")!);
   
   input : number = 0;
   totalSum : number = 0;
@@ -25,6 +26,8 @@ export class BuyItemComponent {
     if ((document.getElementById("selectquantity") as HTMLInputElement).value!=null) {
       this.input = parseInt((document.getElementById("selectquantity") as HTMLInputElement).value);
       this.totalSum=this.buyPrice*(this.input);
+      sessionStorage.setItem('totalprice', this.totalSum.toString());
+
     }
 
   }
@@ -45,16 +48,19 @@ export class BuyItemComponent {
     item_id : 0,
     seller_id : 0
   } 
-  arr : any[] = [];
+  misc : Misc = {
+    listingId : 0,
+    quantity : 0,
+    buyerId : 0
+  }
   PutOrder(e : Event) {
   
-  this.item.id=this.buyID;
-  this.item.quantity=this.input;
-  this.item.buyer_id=this.buyer_id;
-  this.item.price=this.buyPrice;
-  this.arr = [this.item.id,this.item.quantity,this.item.buyer_id];
-  console.log(this.arr);
-  this.api.BuyItem(this.arr);
+  this.misc.listingId=this.buyID;
+  this.misc.quantity=this.input;
+  this.misc.buyerId=this.buyer_id;
+  this.api.BuyItem(this.misc).subscribe((data : any) => {
+    console.log(data);
+  });
 
   //   this.api.GetSellerAndItemIdByListingId(this.buyID).subscribe(data => {
   //     this.item.id=this.buyID;

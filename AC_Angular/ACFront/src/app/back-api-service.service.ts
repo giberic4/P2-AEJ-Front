@@ -5,7 +5,7 @@ import { catchError, retry } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 import {HttpParams} from "@angular/common/http";
 import { User } from './models/user';
-import { Item } from './models/item';
+import { Misc } from './models/misc';
 
 
 @Injectable({
@@ -27,8 +27,10 @@ export class BackApiServiceService {
 
 
   getLogin(user : User) : Observable<boolean>{
+
     return this.http.post(this.apiRoot+"/login", user) as Observable<boolean>
   }
+
 
   getUserByID(id : number) {
     let newUrl=this.apiRoot+`/user?userid=${id}`;
@@ -54,8 +56,31 @@ export class BackApiServiceService {
     return this.http.get(newUrl);
   }
 
-  BuyItem(arr : number[]){
-    this.http.post("http://localhost:5144/store/buy",arr);
-    console.log(arr);
+  BuyItem(misc : Misc) : Observable<any>{
+    let sum = parseInt(sessionStorage.getItem('totalprice')!)
+    let  wallet  =  parseInt(sessionStorage.getItem('wallet')!)
+    sessionStorage.setItem('wallet', (wallet - sum).toString())
+
+    // sessionStorage.setItem('wallet',  )
+    return this.http.post("http://localhost:5144/store/buy",misc) as Observable<any>;
+  }
+
+  BuyRand(by_id : number) {
+    console.log('in buyrandom service')
+    
+    let  wallet  =  parseInt(sessionStorage.getItem('wallet')!)
+    sessionStorage.setItem('wallet', (wallet - 200).toString())
+
+    // sessionStorage.setItem('wallet',  )
+    return this.http.post("http://localhost:5144/grabbag", by_id, {responseType: "text"}) as Observable<string>
+
+  }
+
+  getLoggedin()
+  { 
+  
+    if ("true" === sessionStorage.getItem('loggedin') )
+    return true;
+    else return false;
   }
 }
