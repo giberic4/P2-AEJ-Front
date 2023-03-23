@@ -43,8 +43,9 @@ signin(){
   console.log("signUp password" + pwd.value);
   this.currentUser.wallet = 1000;
   console.log(this.currentUser);
-  this.service.createUser(this.currentUser).subscribe(data => console.log(data));
-  // if error then message
- // if no error then go to homepage.
+  this.service.createUser(this.currentUser).subscribe(
+    data => console.log(data), 
+    err => console.log(alert("Username is taken"), err)
+    );
 }
 }
