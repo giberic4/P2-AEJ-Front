@@ -9,11 +9,11 @@ import { SignInComponent } from '../sign-in/sign-in.component';
 })
 export class UserProfileComponent {
   constructor(private service : BackApiServiceService, private user : SignInComponent) {console.log(user.newuser.username);}
-  username : string  = localStorage.getItem("username")!;
-  fname : string = localStorage.getItem("fname")!;
-  lname : string  = localStorage.getItem("lname")!;
-  id : string = localStorage.getItem("id")!;
-  wallet : string = localStorage.getItem("wallet")!;
+  username : string  = sessionStorage.getItem("username")!;
+  fname : string = sessionStorage.getItem("fname")!;
+  lname : string  = sessionStorage.getItem("lname")!;
+  id : string = sessionStorage.getItem("id")!;
+  wallet : string = sessionStorage.getItem("wallet")!;
 }
 
 

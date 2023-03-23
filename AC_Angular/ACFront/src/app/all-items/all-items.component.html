@@ -1,7 +1,9 @@
 <body>
-<h1>Get All Items</h1>
+    <h1>Get a random item for 200 <a data-tooltip="click me"> <img src="../../assets/bellBag.png" alt="moneybag" style="max-width: 3rem; max-height: 10rem;" role="button" (click)="buyrandom()"></a><span *ngIf = "show"> you got {{randitem}}</span></h1> 
+
+
 <form (submit)="processForm($event)" [formGroup]="AllItemForm">
-    <input type="submit" role="button" value="Show Items">
+    <input type="submit" role="button" value="You can click me to see all the AC household items">
 </form>
 <table *ngIf="items.length > 0">
     <thead>
