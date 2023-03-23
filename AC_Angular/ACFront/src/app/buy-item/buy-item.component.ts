@@ -2,13 +2,14 @@ import { Component, OnChanges } from '@angular/core';
 import { Item } from '../models/item';
 import { Misc } from '../models/misc';
 import { BackApiServiceService } from '../back-api-service.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-buy-item',
   templateUrl: './buy-item.component.html',
   styleUrls: ['./buy-item.component.css']
 })
 export class BuyItemComponent {
-  constructor(private api: BackApiServiceService) {}
+  constructor(private api: BackApiServiceService, private router : Router) {}
 
   buyID : number = parseInt(sessionStorage.getItem('buyID')!);
   buyName : string = sessionStorage.getItem('buyName')!;
@@ -61,18 +62,7 @@ export class BuyItemComponent {
   this.api.BuyItem(this.misc).subscribe((data : any) => {
     console.log(data);
   });
-
-  //   this.api.GetSellerAndItemIdByListingId(this.buyID).subscribe(data => {
-  //     this.item.id=this.buyID;
-  //     this.item.quantity=this.input;
-  //     this.item.buyer_id=this.buyer_id;
-  //     this.item.price=this.buyPrice;
-  //     this.item.seller_id=(data as Array<number>)[0];
-  //     this.item.item_id=(data as Array<number>)[1];
-  //     this.arr = [this.item.id,this.item.quantity,this.item.buyer_id];
-  //     console.log(this.arr);
-  //     this.api.BuyItem(this.arr);
-  // });
+  this.router.navigate([`/user-profile/${this.misc.buyerId}`]);
     
   }
 }

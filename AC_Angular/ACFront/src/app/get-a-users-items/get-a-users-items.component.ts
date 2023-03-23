@@ -44,6 +44,7 @@
 
 import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormArray} from '@angular/forms';
+import { Router } from '@angular/router';
 import { BackApiServiceService } from '../back-api-service.service';
 
 @Component({
@@ -54,7 +55,7 @@ import { BackApiServiceService } from '../back-api-service.service';
   
   export class GetAUsersItemsComponent implements OnInit{
 
-    constructor(private api: BackApiServiceService) { }
+    constructor(private api: BackApiServiceService, private router : Router) { }
     items: any[] = [];
 
     userId = sessionStorage.getItem("id")!;
@@ -94,4 +95,17 @@ import { BackApiServiceService } from '../back-api-service.service';
         });
       // }
     }
+
+    SellItem(e: Event) {
+   
+      var clickedElement = <HTMLElement>e.target;
+      var clickedRow = clickedElement.parentElement?.parentElement?.innerText;
+      sessionStorage.setItem('buyID', clickedRow?.split("\t")[0]!);
+      sessionStorage.setItem('buyName', clickedRow?.split("\t")[1]!);
+      sessionStorage.setItem('buyAvailable', clickedRow?.split("\t")[2]!);
+      sessionStorage.setItem('buyPrice', clickedRow?.split("\t")[3]!);
+      sessionStorage.setItem('buyPhoto', clickedElement.parentElement?.parentElement?.querySelector("img")?.getAttribute('src')!);
+      console.log("############");
+      this.router.navigate([`/user-profile/sell`]);
+  }
   }

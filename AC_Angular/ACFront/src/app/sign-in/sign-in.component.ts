@@ -32,10 +32,10 @@ newuser : User =
   wallet : 0
 }
 
-id : string = "Id";
-wallet : string = "Wallet";
-fname : string = "Firstname";
-lname : string = "Lastname";
+// id : string = "Id";
+// wallet : string = "Wallet";
+// fname : string = "Firstname";
+// lname : string = "Lastname";
 
 signinform = new FormGroup({
   username: new FormControl(''),
@@ -48,18 +48,27 @@ validate()
 {
   const username = (document.getElementById("loginID")) as HTMLInputElement;
   const password = (document.getElementById("passwordID")) as HTMLInputElement;
-
+  console.log(username.value);
+  
+    
 
   this.login(username.value, password.value)
 
 }
 
-user0 : boolean = false;
 s : string | null = "";
+
+
 
 login(u : string, p : string){
 
-  let routeID : number = 0;
+  this.service.getUserByUsername(u).subscribe(data => {
+    this.newuser.id=Object.values(data)[0];
+    this.newuser.fname=Object.values(data)[1];
+    this.newuser.lname=Object.values(data)[2];
+    this.newuser.wallet=Object.values(data)[5];
+  });
+
   this.newuser.username = u;
   console.log("username in login : " + u)
   this.newuser.password = p;
@@ -71,30 +80,27 @@ login(u : string, p : string){
       alert("invalid username/password combination!");
     }
     if (data === true ){
+      
+      sessionStorage.clear(); 
+      sessionStorage.setItem("username", this.newuser.username);
+      sessionStorage.setItem("fname", this.newuser.fname);
+      sessionStorage.setItem("lname", this.newuser.lname);
+      sessionStorage.setItem("wallet", String(this.newuser.wallet));
+      sessionStorage.setItem("id", String(this.newuser.id));
+      this.router.navigate([`/user-profile/${this.newuser.username}`]);
       alert("success!");
     }
     console.log(data);
   });
-  this.router.navigateByUrl('');
 
-  this.service.getUserByUsername(this.newuser.username).subscribe(data => {
-    console.log(Object.values(data));
-    this.newuser.id=Object.values(data)[0];
-    this.newuser.fname=Object.values(data)[1];
-    this.newuser.lname=Object.values(data)[2];
-    this.newuser.wallet=Object.values(data)[6];
-  });
 
-  this.service.getLogin(this.newuser).subscribe(data => {
-    if (data===true) {  
-        sessionStorage.clear(); 
-        sessionStorage.setItem('username', this.newuser.username);
-        sessionStorage.setItem('fname', this.newuser.fname);
-        sessionStorage.setItem('lname', this.newuser.lname);
-        sessionStorage.setItem('wallet', String(this.newuser.wallet));
-        sessionStorage.setItem("id", String(this.newuser.id));
-        this.router.navigate([`/user-profile/${this.newuser.username}`]);
-    }
-  });
+
+  // this.service.getLogin(this.newuser).subscribe(data => {
+  //   if (data===true) {  
+    
+    
+  //       this.router.navigate([`/user-profile/${this.newuser.username}`]);
+  //   }
+  // });
 }
 }

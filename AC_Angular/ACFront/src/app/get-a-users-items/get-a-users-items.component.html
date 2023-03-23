@@ -53,6 +53,7 @@
         <th>Name</th>
         <th>Quantity</th>
         <th>Photo</th>
+        <th></th>
     </thead>
     <tbody>
         <tr *ngFor="let i of items">
@@ -60,6 +61,7 @@
             <td>{{i.Name}}</td>
             <td>{{i.Balance}}</td>
             <td><img src={{i.Url}} height="100" width="100"></td>
+            <td><button id={{i.Id}} (click)="SellItem($event)">Sell</button></td>
         </tr>
     </tbody>
 </table>

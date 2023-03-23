@@ -14,7 +14,7 @@ import { GetMarketplaceItemsComponent } from './get-marketplace-items/get-market
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { BuyItemComponent } from './buy-item/buy-item.component';
 import { AllItemsComponent } from './all-items/all-items.component';
-
+import { SellItemComponent } from './sell-item/sell-item.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +27,8 @@ import { AllItemsComponent } from './all-items/all-items.component';
     GetMarketplaceItemsComponent,
     UserProfileComponent,
     BuyItemComponent,
-    AllItemsComponent
+    AllItemsComponent,
+    SellItemComponent
   ],
   imports: [
     BrowserModule,

@@ -31,13 +31,34 @@
                 </tr> 
             </tbody>
         </table>
+        <a (click)="LogOut()">Log Out</a>
         </div>
       </div>
       
       <div class="split1 right">
         <div class="centered">
             <h2>My inventory</h2>
-          <app-get-a-users-items></app-get-a-users-items>
+            <table>
+                <thead>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Photo</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of items">
+                        <td>{{i.Id}}</td>
+                        <td>{{i.Name}}</td>
+                        <td>{{i.Balance}}</td>
+                        <td><img src={{i.Url}} height="100" width="100"></td>
+                        <td><button id={{i.Id}} (click)="SellItem($event)">Sell</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p *ngIf="items.length === 0">
+                No items to display... :(
+            </p>
         </div>
       </div>
 </body>

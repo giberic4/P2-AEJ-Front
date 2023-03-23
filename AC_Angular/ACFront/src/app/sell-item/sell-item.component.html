@@ -1,0 +1,62 @@
+<div class="split left">
+    <div class="left">
+<h2>Sell Your Item</h2> 
+<img src={{sellPhoto}} style="border : 6px solid rgb(65, 132, 187)" width="150px" height="150">
+
+<h6><br>Item details</h6>
+<table>
+  <tbody>
+      <tr>
+          <th>Item ID: </th>
+          <td>{{sellID}}</td>
+      </tr>
+      <tr>
+          <th>Name: </th>
+          <td>{{sellName}}</td>
+      </tr>
+      <tr>
+          <th>Availability: </th>
+          <td>{{sellAvailable}}</td>
+      </tr>
+      <!-- <tr>
+          <th>Wallet: </th>
+          <td>{{wallet}}</td>
+      </tr>   -->
+  </tbody>
+</table>
+</div>
+</div>
+
+<div class="split1 right">
+    <div class="centered">
+
+<label for="selectquantity">How many do you want to sell?<span class="required">*</span></label>
+<input id ="selectquantity" type="number" name="selectquantity" (keyup)="ValidateQuantity()" (change)="ValidateQuantity()">
+
+<label for="selectprice">What is the unit price?<span class="required">*</span></label>
+<input id ="selectprice" type="number" name="selectprice" (keyup)="ValidatePrice()" (change)="ValidatePrice()">
+<!-- <span class="validity"></span> -->
+
+<table *ngIf="inputQuantity>0 && inputQuantity<=sellAvailable && inputPrice>0">
+    <h6><br>Summary</h6>
+    <tbody>
+        <tr>
+            <th>Unit Price: </th>
+            <td>{{inputPrice}}</td>
+        </tr>
+        <tr>
+            <th>Quantity: </th>
+            <td>{{inputQuantity}}</td>
+        </tr>
+        <tr>
+            <th>Total Price: </th>
+            <td>{{inputPrice*inputQuantity}}</td>
+        </tr> 
+    </tbody>
+</table>
+<!-- <p *ngIf="totalSum>wallet" style="color : red"><br>You don't have enough funds to buy these quantity</p> -->
+<button (click)="ListItem($event)">Post to Marketplace</button>
+</div>
+</div>
+
+
