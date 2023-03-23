@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { BackApiServiceService } from '../back-api-service.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -6,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['../../../node_modules/@picocss/pico/css/pico.classless.css']
 })
 export class NavigationBarComponent {
+constructor(private service : BackApiServiceService){}
+
+login = this.service.getLoggedin();
+
+ngOnChanges(){
+    console.log('checked')
+    this.login = this.service.getLoggedin()
+}
+
+
 
 }

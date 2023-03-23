@@ -62,4 +62,23 @@ export class BackApiServiceService {
     // sessionStorage.setItem('wallet',  )
     return this.http.post("http://localhost:5144/store/buy",misc) as Observable<any>;
   }
+
+  BuyRand(by_id : number) {
+    console.log('in buyrandom service')
+    
+    let  wallet  =  parseInt(sessionStorage.getItem('wallet')!)
+    sessionStorage.setItem('wallet', (wallet - 200).toString())
+
+    // sessionStorage.setItem('wallet',  )
+    return this.http.post("http://localhost:5144/grabbag", by_id, {responseType: "text"}) as Observable<string>
+
+  }
+
+  getLoggedin()
+  { 
+    let login = "false";
+    if ( login == sessionStorage.getItem('loggedIn') )
+    return true;
+    else return false;
+  }
 }

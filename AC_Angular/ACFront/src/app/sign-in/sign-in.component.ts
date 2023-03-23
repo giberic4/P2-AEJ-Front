@@ -93,6 +93,7 @@ login(u : string, p : string){
         sessionStorage.setItem('lname', this.newuser.lname);
         sessionStorage.setItem('wallet', String(this.newuser.wallet));
         sessionStorage.setItem("id", String(this.newuser.id));
+        sessionStorage.setItem("loggedin", 'true')
         this.router.navigate([`/user-profile/${this.newuser.username}`]);
     }
   });
