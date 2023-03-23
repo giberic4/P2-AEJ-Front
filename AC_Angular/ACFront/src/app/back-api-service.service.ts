@@ -7,6 +7,7 @@ import {HttpParams} from "@angular/common/http";
 import { User } from './models/user';
 import { Misc } from './models/misc';
 import { Sellinfo } from './models/sellinfo';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
@@ -65,11 +66,11 @@ export class BackApiServiceService {
   }
 
   SellItem(sellinfo : Sellinfo) : Observable<any>{
-    let sum = parseInt(sessionStorage.getItem('totalprice')!)
-    let  wallet  =  parseInt(sessionStorage.getItem('wallet')!)
-    sessionStorage.setItem('wallet', (wallet).toString())
+    // let sum = parseInt(sessionStorage.getItem('totalprice')!)
+    // let  wallet  =  parseInt(sessionStorage.getItem('wallet')!)
+    // sessionStorage.setItem('wallet', (wallet).toString())
 
-    sessionStorage.setItem('wallet',  )
+    // sessionStorage.setItem('wallet',  )
     return this.http.post("http://localhost:5144/store/sell",sellinfo) as Observable<any>;
 }
   BuyRand(by_id : number) {
@@ -83,11 +84,13 @@ export class BackApiServiceService {
 
   }
 
-  getLoggedin()
-  { 
+  public $marketplace_toggle : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   
-    if ("true" === sessionStorage.getItem('loggedin') )
-    return true;
-    else return false;
+  public authenticate() {
+    this.$marketplace_toggle.next(true);
+  }
+
+  public deauthenticate() {
+    this.$marketplace_toggle.next(false);
   }
 }

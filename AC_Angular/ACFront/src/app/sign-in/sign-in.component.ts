@@ -6,6 +6,7 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { BackApiServiceService } from '../back-api-service.service';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
+import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
 
 
 @Component({
@@ -21,7 +22,7 @@ import { Injectable } from '@angular/core';
 export class SignInComponent {
 
   
-constructor(_http: HttpClient, private service : BackApiServiceService, private router : Router){}
+constructor(private nav:NavigationBarComponent,_http: HttpClient, private service : BackApiServiceService, private router : Router){}
 newuser : User = 
 {
   username :  "",
@@ -67,8 +68,9 @@ login(u : string, p : string){
     this.newuser.fname=Object.values(data)[1];
     this.newuser.lname=Object.values(data)[2];
     this.newuser.wallet=Object.values(data)[5];
+    console.log(Object.values(data));
   });
-
+  
   this.newuser.username = u;
   console.log("username in login : " + u)
   this.newuser.password = p;
@@ -87,10 +89,13 @@ login(u : string, p : string){
       sessionStorage.setItem("lname", this.newuser.lname);
       sessionStorage.setItem("wallet", String(this.newuser.wallet));
       sessionStorage.setItem("id", String(this.newuser.id));
+      sessionStorage.setItem("loggedin", 'true')
       this.router.navigate([`/user-profile/${this.newuser.username}`]);
       alert("success!");
+      this.service.authenticate();
+      // this.nav.call();
+      // console.log("Beeeeee",init_status);
     }
-    console.log(data);
   });
 
 
@@ -101,19 +106,5 @@ login(u : string, p : string){
     this.newuser.lname=Object.values(data)[2];
     this.newuser.wallet=Object.values(data)[5];
   });
-
-  this.service.getLogin(this.newuser).subscribe(data => {
-    if (data===true) {  
-        sessionStorage.clear(); 
-        sessionStorage.setItem('username', this.newuser.username);
-        sessionStorage.setItem('fname', this.newuser.fname);
-        sessionStorage.setItem('lname', this.newuser.lname);
-        sessionStorage.setItem('wallet', String(this.newuser.wallet));
-        sessionStorage.setItem("id", String(this.newuser.id));
-        sessionStorage.setItem("loggedin", 'true')
-        this.router.navigate([`/user-profile/${this.newuser.username}`]);
-    }
-  });
-
 }
 }
