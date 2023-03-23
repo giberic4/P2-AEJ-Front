@@ -28,7 +28,6 @@ newuser : User =
   password : "",
   fname : "",
   lname : "",
-  email : "",
   wallet : 0
 }
 
@@ -54,12 +53,9 @@ validate()
 
 }
 
-user0 : boolean = false;
-s : string | null = "";
 
 login(u : string, p : string){
 
-  let routeID : number = 0;
   this.newuser.username = u;
   console.log("username in login : " + u)
   this.newuser.password = p;
@@ -85,6 +81,7 @@ login(u : string, p : string){
     this.newuser.wallet=Object.values(data)[5];
   });
 
+  
   this.service.getLogin(this.newuser).subscribe(data => {
     if (data===true) {  
         sessionStorage.clear(); 
