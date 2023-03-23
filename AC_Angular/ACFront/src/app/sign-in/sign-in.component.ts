@@ -28,7 +28,6 @@ newuser : User =
   password : "",
   fname : "",
   lname : "",
-  email : "",
   wallet : 0
 }
 
@@ -55,9 +54,6 @@ validate()
   this.login(username.value, password.value)
 
 }
-
-s : string | null = "";
-
 
 
 login(u : string, p : string){
@@ -102,6 +98,7 @@ login(u : string, p : string){
     this.newuser.wallet=Object.values(data)[5];
   });
 
+  
   this.service.getLogin(this.newuser).subscribe(data => {
     if (data===true) {  
         sessionStorage.clear(); 
