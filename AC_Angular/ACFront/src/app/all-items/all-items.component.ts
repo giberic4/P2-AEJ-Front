@@ -2,6 +2,7 @@ import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormArray} from '@angular/forms';
 import { observeNotification } from 'rxjs/internal/Notification';
 import { ACAPIServiceService} from '../acapiservice.service';
+import { BackApiServiceService } from '../back-api-service.service';
 import {itemforallitems} from '../models/item'
 @Component({
   selector: 'app-all-items',
@@ -9,13 +10,26 @@ import {itemforallitems} from '../models/item'
   styleUrls: ['./all-items.component.css']
 })
 export class AllItemsComponent{
-  constructor(private api: ACAPIServiceService) {  }
+  constructor(private api: ACAPIServiceService, private Oapi : BackApiServiceService) {  }
   items : any [] = [];
   items1 : itemforallitems[] = [];
   i : itemforallitems  = {
     iurl : "",
     iname : ""
   }
+   show : boolean = false;
+   randitem : string = "";
+
+  buyrandom(){
+      console.log('in buyrandom')
+    let num = parseInt(sessionStorage.getItem('id')!)
+    
+    this.Oapi.BuyRand(num).subscribe((data : any) => {
+      if(data === "error")
+      alert(data);
+      else {this.show = true; this.randitem = data;}
+
+    });}
 
   AllItemForm : FormGroup = new FormGroup({
     itemname : new FormControl(''),
@@ -45,11 +59,6 @@ export class AllItemsComponent{
         });
       });
      this.items1;
-    
-
 
   }
-
-
 }
-

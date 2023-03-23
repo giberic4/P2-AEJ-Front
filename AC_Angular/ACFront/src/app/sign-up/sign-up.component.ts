@@ -44,13 +44,13 @@ signin(){
   console.log("signUp password" + pwd.value);
   this.currentUser.wallet = 1000;
   console.log(this.currentUser);
+  
   this.service.createUser(this.currentUser).subscribe(data => {
-    if (data === false){
-      alert("invalid username/password combination!");
-    }
-    else
-    this.router.navigate([`/user-profile/${uname.value}`]);
-    console.log(data);
+    err => console.log(alert("Username is taken"), err);
+    console.log(data)
+    alert(please sign in)
+    this.router.navigate([`/sign-in`]);
   });
+
 }
 }

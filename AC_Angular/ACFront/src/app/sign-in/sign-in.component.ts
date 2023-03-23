@@ -94,13 +94,26 @@ login(u : string, p : string){
   });
 
 
+  this.service.getUserByUsername(u).subscribe(data => {
+    console.log(Object.values(data));
+    this.newuser.id=Object.values(data)[0];
+    this.newuser.fname=Object.values(data)[1];
+    this.newuser.lname=Object.values(data)[2];
+    this.newuser.wallet=Object.values(data)[5];
+  });
 
-  // this.service.getLogin(this.newuser).subscribe(data => {
-  //   if (data===true) {  
-    
-    
-  //       this.router.navigate([`/user-profile/${this.newuser.username}`]);
-  //   }
-  // });
+  this.service.getLogin(this.newuser).subscribe(data => {
+    if (data===true) {  
+        sessionStorage.clear(); 
+        sessionStorage.setItem('username', this.newuser.username);
+        sessionStorage.setItem('fname', this.newuser.fname);
+        sessionStorage.setItem('lname', this.newuser.lname);
+        sessionStorage.setItem('wallet', String(this.newuser.wallet));
+        sessionStorage.setItem("id", String(this.newuser.id));
+        sessionStorage.setItem("loggedin", 'true')
+        this.router.navigate([`/user-profile/${this.newuser.username}`]);
+    }
+  });
+
 }
 }
