@@ -2,6 +2,7 @@ import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { BackApiServiceService } from '../back-api-service.service';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { Router,RouterLink, Navigation } from '@angular/router';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -16,15 +17,6 @@ export class NavigationBarComponent {
 constructor(public service : BackApiServiceService){}
 
 login : boolean = true;
-
-// call() {
-//   console.log("Araaaaaaaa" )
-//   let log : boolean = false;
-//   this.service.loggedin_status.subscribe((data:any)=> {
-//     this.login=data;
-//     console.log("hop",this.login);
-//   });
-// }
 
 }
 
