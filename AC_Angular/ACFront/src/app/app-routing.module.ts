@@ -9,13 +9,13 @@ import {UserProfileComponent} from './user-profile/user-profile.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { BuyItemComponent } from './buy-item/buy-item.component';
 import { AllItemsComponent } from './all-items/all-items.component';
+import { SellItemComponent } from './sell-item/sell-item.component';
 
 const routes: Routes = [
 
 {path: 'users-items/{id}',
  component : GetAUsersItemsComponent 
 },
-
 {path : '',component : SignInComponent},
 {path: 'user-home/', component : UserHomeComponent},
 {path: 'home-page',  component : HomePageComponent},
@@ -23,10 +23,11 @@ const routes: Routes = [
 {path : 'user-items', component : GetAUsersItemsComponent},
 {path: 'sign-up', component : SignUpComponent},
 {path: 'marketplace', component: GetMarketplaceItemsComponent },
+{path : 'user-profile/null', component : SignInComponent},
 {path: 'user-profile/:id', component: UserProfileComponent },
 {path: 'allitems', component : AllItemsComponent},
-{path: 'marketplace/:id', component: BuyItemComponent }
-
+{path: 'marketplace/buy', component: BuyItemComponent },
+{path: 'marketplace/sell', component: SellItemComponent },
 ];
 
 @NgModule({

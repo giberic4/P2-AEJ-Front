@@ -2,6 +2,7 @@ import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormArray} from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { BackApiServiceService } from '../back-api-service.service';
+import { UserItemsService } from '../user-items.service';
 
 @Component({
   selector: 'app-get-marketplace-items',
@@ -10,8 +11,15 @@ import { BackApiServiceService } from '../back-api-service.service';
 })
 export class GetMarketplaceItemsComponent implements OnInit {
 
-  constructor(private api: BackApiServiceService, private router : Router) { }
+  constructor(private service: UserItemsService,private api: BackApiServiceService, private router : Router) {
+    this.service.currentData.subscribe(value => {
+      this.userItems=value;
+    })
+   }
   items : any [] = [];
+  userItems: any[] = [];
+  userId = sessionStorage.getItem("id")!;
+  userIdInt : number = +this.userId;
   
   ngOnInit(): void {
     console.log("dd");
@@ -36,7 +44,11 @@ export class GetMarketplaceItemsComponent implements OnInit {
       sessionStorage.setItem('buyAvailable', clickedRow?.split("\t")[2]!);
       sessionStorage.setItem('buyPrice', clickedRow?.split("\t")[3]!);
       sessionStorage.setItem('buyPhoto', clickedElement.parentElement?.parentElement?.querySelector("img")?.getAttribute('src')!);
-      
+
+      this.api.getAllUserItems(this.userIdInt).subscribe(data => {
+        this.userItems=data as any;
+      });
+      this.service.changeSubject(this.userItems);
       this.router.navigate([`/marketplace/buy`]);
   }
 
