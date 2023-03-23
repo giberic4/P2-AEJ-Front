@@ -76,8 +76,8 @@ export class BackApiServiceService {
 
   getLoggedin()
   { 
-    let login = "false";
-    if ( login == sessionStorage.getItem('loggedIn') )
+  
+    if ("true" === sessionStorage.getItem('loggedin') )
     return true;
     else return false;
   }

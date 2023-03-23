@@ -77,12 +77,12 @@ login(u : string, p : string){
   });
   this.router.navigateByUrl('');
 
-  this.service.getUserByUsername(this.newuser.username).subscribe(data => {
+  this.service.getUserByUsername(u).subscribe(data => {
     console.log(Object.values(data));
     this.newuser.id=Object.values(data)[0];
     this.newuser.fname=Object.values(data)[1];
     this.newuser.lname=Object.values(data)[2];
-    this.newuser.wallet=Object.values(data)[6];
+    this.newuser.wallet=Object.values(data)[5];
   });
 
   this.service.getLogin(this.newuser).subscribe(data => {
