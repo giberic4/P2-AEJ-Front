@@ -22,7 +22,6 @@ export class GetMarketplaceItemsComponent implements OnInit {
   userIdInt : number = +this.userId;
   
   ngOnInit(): void {
-    console.log("dd");
     this.api.getMarketplaceItems().subscribe(data => {
       this.items=data as any;
   });

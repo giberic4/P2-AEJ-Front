@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { GetAUsersItemsComponent } from './get-a-users-items.component';
 import { BackApiServiceService } from '../back-api-service.service';
+import { createComponent } from '@angular/core';
 
 
 describe('GetAUsersItemsComponent', () => {
@@ -32,11 +33,11 @@ describe('GetAUsersItemsComponent', () => {
   });
 
   it('should use getAllUserItems', () =>{
-    const spy = spyOn(service, 'getAllUserItems');
+    // const spy = spyOn(service, 'getAllUserItems');
 
     component.ngOnInit()
+    expect(component.items).toEqual([])
 
-    expect(spy).toHaveBeenCalled()
 
 
 

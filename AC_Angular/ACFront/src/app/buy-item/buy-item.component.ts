@@ -59,7 +59,6 @@ export class BuyItemComponent {
   this.misc.quantity=this.input;
   this.misc.buyerId=this.buyer_id;
   this.api.BuyItem(this.misc).subscribe((data : any) => {
-    console.log(data);
   });
   this.router.navigate([`/user-profile/${this.misc.buyerId}`]);
     

@@ -68,7 +68,6 @@ export class BackApiServiceService {
     return this.http.post("https://apiback.azurewebsites.net/store/sell",sellinfo) as Observable<any>;
 }
   BuyRand(by_id : number) {
-    console.log('in buyrandom service')
     
     let  wallet  =  parseInt(sessionStorage.getItem('wallet')!)
     sessionStorage.setItem('wallet', (wallet - 200).toString())

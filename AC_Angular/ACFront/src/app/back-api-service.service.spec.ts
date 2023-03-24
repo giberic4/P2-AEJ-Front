@@ -44,7 +44,6 @@ describe('BackApiServiceService', () => {
     service.getLogin(User).subscribe(result =>{
       expect(result).toBeTruthy();
       expect(result.valueOf).toBeTruthy(); 
-      console.log('results verified')
     });
      const req = httpMock.expectOne('http://localhost:5144/login');
      expect(req.request.method).toBe('POST')

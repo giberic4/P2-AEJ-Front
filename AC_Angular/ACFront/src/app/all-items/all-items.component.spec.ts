@@ -27,4 +27,20 @@ describe('AllItemsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should buy a random item', () => {
+    expect(component).toBeTruthy();
+    component.buyrandom();
+    expect(component.show).toBeFalse();
+    expect(component.Name).toBeUndefined();
+    expect(component.clicked).toBeFalse()
+    
+
+  });
+
+
+
+
+
+
 });
