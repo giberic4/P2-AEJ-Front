@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { GetAUsersItemsComponent } from './get-a-users-items.component';
@@ -14,7 +15,8 @@ describe('GetAUsersItemsComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ GetAUsersItemsComponent ],
       imports: [
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        HttpClientModule
       ],
       providers: [
         BackApiServiceService

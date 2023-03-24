@@ -7,6 +7,7 @@ import {HttpParams} from "@angular/common/http";
 import { User } from './models/user';
 import { Misc } from './models/misc';
 import { Sellinfo } from './models/sellinfo';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
@@ -74,5 +75,24 @@ export class BackApiServiceService {
 
     return this.http.post("http://localhost:5144/grabbag", by_id, {responseType: "text"}) as Observable<string>
 
+  }
+
+  current_state = sessionStorage.getItem("loggedin");
+
+  ParseBoolean(value : string | null) : boolean {
+    if (value==="true")
+      return true;
+    else
+      return false;
+  }
+
+  public $marketplace_toggle : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.ParseBoolean(this.current_state));
+  
+  public authenticate() {
+    this.$marketplace_toggle.next(true);
+  }
+  
+  public deauthenticate() {
+    this.$marketplace_toggle.next(false);
   }
 }

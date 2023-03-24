@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { OnInit } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { AllItemsComponent } from './all-items.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,6 +12,7 @@ describe('AllItemsComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule,
+        HttpClientModule,
         FormsModule,
         ReactiveFormsModule
       ],

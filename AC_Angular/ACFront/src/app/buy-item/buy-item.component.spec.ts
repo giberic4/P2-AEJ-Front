@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { BackApiServiceService } from '../back-api-service.service';
@@ -13,7 +14,8 @@ describe('BuyItemComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ BuyItemComponent ],
       imports: [
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        HttpClientModule
       ]
     })
     .compileComponents();
@@ -25,6 +27,11 @@ describe('BuyItemComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('Default values test', () => {
+    expect(component.input).toEqual(0);
+    expect(component.totalSum).toEqual(0);
   });
 
   it('should use PutOrder', fakeAsync(() => {
@@ -47,5 +54,4 @@ describe('BuyItemComponent', () => {
     
   });
 
-  
 });

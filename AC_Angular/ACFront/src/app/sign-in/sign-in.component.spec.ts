@@ -1,12 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { SignInComponent } from './sign-in.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BackApiServiceService } from '../back-api-service.service';
 import { Observable } from 'rxjs';
-//differences between comp and service test
-//they have lifecycle hooks, 
-//
+
 describe('SignInComponent', () => {
   let component: SignInComponent;
   let fixture: ComponentFixture<SignInComponent>;

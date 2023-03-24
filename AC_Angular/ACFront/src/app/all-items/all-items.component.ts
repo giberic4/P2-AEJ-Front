@@ -48,8 +48,6 @@ export class AllItemsComponent implements OnChanges{
   
 
   processForm(e: Event) {
-
-
     this.clicked=true;
       this.api.AllItems().subscribe(data => {
         this.items=data as any;
@@ -62,6 +60,7 @@ export class AllItemsComponent implements OnChanges{
             iname : element[0]['name']['name-USen']
           }
         )
+        this.clicked=true;
         });
       });
      this.items1;
