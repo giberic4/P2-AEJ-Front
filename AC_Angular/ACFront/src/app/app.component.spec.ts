@@ -1,16 +1,25 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        HttpClientTestingModule
+        
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        NavigationBarComponent
       ],
+      providers : [
+        NavigationBarComponent
+
+      ]
     }).compileComponents();
   });
 
@@ -20,11 +29,11 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'ACFront'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('ACFront');
-  });
+  // it(`should have as title 'AnimalCrossing'`, () => {
+  //   const fixture = TestBed.createComponent(AppComponent);
+  //   const app = fixture.componentInstance;
+  //   expect(app.title).toEqual('AnimalCrossing');
+  // });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);

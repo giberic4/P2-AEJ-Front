@@ -30,7 +30,6 @@ export class AllItemsComponent implements OnChanges{
 
 
   buyrandom(){
-      console.log('in buyrandom')
     let num = parseInt(sessionStorage.getItem('id')!)
     
     this.Oapi.BuyRand(num).subscribe((data : any) => {
@@ -52,8 +51,6 @@ export class AllItemsComponent implements OnChanges{
 
 
     this.clicked=true;
-    console.log(this.AllItemForm);
-
       this.api.AllItems().subscribe(data => {
         this.items=data as any;
         this.items.forEach(element  => { 
