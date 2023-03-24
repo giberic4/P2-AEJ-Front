@@ -43,8 +43,35 @@ describe('BuyItemComponent', () => {
     
     const event = new InputEvent("2");
     const input = parseInt((document.getElementById("selectquantity") as HTMLInputElement).value);    component.Calculate(event);
-    
-    expect(component.Calculate(event)).toHaveBeenCalled();
+    expect(input).toBeFalsy();
     
   });
+
+  it('should process valid form', () => {
+    //arrange
+    const event = new SubmitEvent('submit');
+    spyOn(component.form, 'markAllAsTouched');
+    spyOn(service, 'createNewWorkout').and.returnValue(of({
+      id: 1,
+      workoutName: 'test workout',
+      workoutDate: new Date(),
+      workoutExercises: []
+    }))
+
+    component.form.controls['selectquantity'].setValue('test workout');
+
+    
+    //Act
+    component.processForm(event);
+
+    //Assert
+    expect(event.preventDefault).toHaveBeenCalledTimes(1);
+    expect(component.form.markAllAsTouched).toHaveBeenCalled();
+    expect(service.createNewWorkout).toHaveBeenCalled();
+
+  })
+
+
+
+  
 });

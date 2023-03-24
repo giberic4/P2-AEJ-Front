@@ -61,17 +61,10 @@ export class BackApiServiceService {
     let sum = parseInt(sessionStorage.getItem('totalprice')!)
     let  wallet  =  parseInt(sessionStorage.getItem('wallet')!)
     sessionStorage.setItem('wallet', (wallet - sum).toString())
-
-    // sessionStorage.setItem('wallet',  )
     return this.http.post("https://apiback.azurewebsites.net/store/buy",misc) as Observable<any>;
   }
 
   SellItem(sellinfo : Sellinfo) : Observable<any>{
-    // let sum = parseInt(sessionStorage.getItem('totalprice')!)
-    // let  wallet  =  parseInt(sessionStorage.getItem('wallet')!)
-    // sessionStorage.setItem('wallet', (wallet).toString())
-
-    // sessionStorage.setItem('wallet', wallet )
     return this.http.post("https://apiback.azurewebsites.net/store/sell",sellinfo) as Observable<any>;
 }
   BuyRand(by_id : number) {
@@ -82,13 +75,5 @@ export class BackApiServiceService {
 
     return this.http.post("http://localhost:5144/grabbag", by_id, {responseType: "text"}) as Observable<string>
 
-  }
-
-  getLoggedin()
-  { 
-  
-    if ("true" === sessionStorage.getItem('loggedin') )
-    return true;
-    else return false;
   }
 }

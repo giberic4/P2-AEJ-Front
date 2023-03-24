@@ -22,7 +22,6 @@ export class BuyItemComponent {
   input : number = 0;
   totalSum : number = 0;
 
-  // input : string = (document.getElementById("selectquantity") as HTMLInputElement).value;
   Calculate(e : Event) {
     if ((document.getElementById("selectquantity") as HTMLInputElement).value!=null) {
       this.input = parseInt((document.getElementById("selectquantity") as HTMLInputElement).value);

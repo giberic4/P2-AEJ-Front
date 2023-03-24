@@ -65,8 +65,6 @@ import { BackApiServiceService } from '../back-api-service.service';
     ngOnInit(): void {
       this.api.getAllUserItems(this.userIdInt).subscribe(data => {
         this.items=data as any;
-        console.log(this.items);
-        console.log("@@@@@@");
     });
   }
 
