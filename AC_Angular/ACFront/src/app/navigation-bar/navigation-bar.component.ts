@@ -14,10 +14,13 @@ import { Router,RouterLink, Navigation } from '@angular/router';
   providedIn: 'root'
 })
 export class NavigationBarComponent {
-constructor(public service : BackApiServiceService){}
+constructor(public service : BackApiServiceService, private router : Router){}
 
 login : boolean = true;
 
+clicked() {
+  this.router.navigate([`/user-profile/${sessionStorage.getItem('username')}`]);
+}
 }
 
 
