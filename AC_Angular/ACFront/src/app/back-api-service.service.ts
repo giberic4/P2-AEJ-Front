@@ -29,7 +29,9 @@ export class BackApiServiceService {
 
 
   getLogin(user : User) : Observable<boolean>{
-    return this.http.post(this.apiRoot+"/login", user) as Observable<boolean>}
+
+    return this.http.post(this.apiRoot+"/login", user) as Observable<boolean>
+  }
 
 
   getUserByID(id : number) {
@@ -60,21 +62,13 @@ export class BackApiServiceService {
     let sum = parseInt(sessionStorage.getItem('totalprice')!)
     let  wallet  =  parseInt(sessionStorage.getItem('wallet')!)
     sessionStorage.setItem('wallet', (wallet - sum).toString())
-
-    // sessionStorage.setItem('wallet',  )
     return this.http.post("https://apiback.azurewebsites.net/store/buy",misc) as Observable<any>;
   }
 
   SellItem(sellinfo : Sellinfo) : Observable<any>{
-    // let sum = parseInt(sessionStorage.getItem('totalprice')!)
-    // let  wallet  =  parseInt(sessionStorage.getItem('wallet')!)
-    // sessionStorage.setItem('wallet', (wallet).toString())
-
-    // sessionStorage.setItem('wallet', wallet )
     return this.http.post("https://apiback.azurewebsites.net/store/sell",sellinfo) as Observable<any>;
 }
   BuyRand(by_id : number) {
-    console.log('in buyrandom service')
     
     let  wallet  =  parseInt(sessionStorage.getItem('wallet')!)
     sessionStorage.setItem('wallet', (wallet - 200).toString())

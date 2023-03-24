@@ -29,52 +29,34 @@ newuser : User =
   password : "",
   fname : "",
   lname : "",
-  email : "",
   wallet : 0
 }
 
-// id : string = "Id";
-// wallet : string = "Wallet";
-// fname : string = "Firstname";
-// lname : string = "Lastname";
 
 signinform = new FormGroup({
   username: new FormControl(''),
   password: new FormControl(''),
 });
 
-//validate is not needed, it may be used in the future to validate or check for valid credentails. 
-//we can also validate in the html as well.
 validate()
 {
   const username = (document.getElementById("loginID")) as HTMLInputElement;
   const password = (document.getElementById("passwordID")) as HTMLInputElement;
-  console.log(username.value);
-  
-    
-
   this.login(username.value, password.value)
 
 }
-
-s : string | null = "";
-
 
 
 login(u : string, p : string){
 
   this.newuser.username = u;
-  console.log("username in login : " + u)
   this.newuser.password = p;
-  console.log("password in login : " + p)
-  console.log(this.newuser);
 
   this.service.getUserByUsername(this.newuser.username).subscribe(data => {
     this.newuser.id=Object.values(data)[0];
     this.newuser.fname=Object.values(data)[1];
     this.newuser.lname=Object.values(data)[2];
     this.newuser.wallet=Object.values(data)[5];
-    console.log("IIIIIIIIIIII",Object.values(data));
   });
   
   
@@ -95,18 +77,7 @@ login(u : string, p : string){
       this.router.navigate([`/user-profile/${this.newuser.username}`]);
       alert('success!');
       this.service.authenticate();
-      // this.nav.call();
-      // console.log("Beeeeee",init_status);
     }
   });
-
-
-  // this.service.getUserByUsername(u).subscribe(data => {
-  //   console.log(Object.values(data));
-  //   this.newuser.id=Object.values(data)[0];
-  //   this.newuser.fname=Object.values(data)[1];
-  //   this.newuser.lname=Object.values(data)[2];
-  //   this.newuser.wallet=Object.values(data)[5];
-  // });
 }
 }

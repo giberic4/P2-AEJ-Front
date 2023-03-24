@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { SellItemComponent } from './sell-item.component';
 
 describe('SellItemComponent', () => {
@@ -9,8 +9,11 @@ describe('SellItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SellItemComponent ],
-      imports: [HttpClientModule]
+      imports: [
+        HttpClientTestingModule,
+        HttpClientModule
+      ],
+      declarations: [ SellItemComponent ]
     })
     .compileComponents();
 
