@@ -83,12 +83,21 @@ export class BackApiServiceService {
 
   }
 
-  public $marketplace_toggle : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  current_state = sessionStorage.getItem("loggedin");
+
+  ParseBoolean(value : string | null) : boolean {
+    if (value==="true")
+      return true;
+    else
+      return false;
+  }
+
+  public $marketplace_toggle : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.ParseBoolean(this.current_state));
   
   public authenticate() {
     this.$marketplace_toggle.next(true);
   }
-
+  
   public deauthenticate() {
     this.$marketplace_toggle.next(false);
   }

@@ -1,5 +1,5 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { GetAUsersItemsComponent } from './get-a-users-items.component';
 
 describe('GetAUsersItemsComponent', () => {
@@ -8,7 +8,8 @@ describe('GetAUsersItemsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GetAUsersItemsComponent ]
+      declarations: [ GetAUsersItemsComponent ],
+      imports: [HttpClientModule]
     })
     .compileComponents();
 

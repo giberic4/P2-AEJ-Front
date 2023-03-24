@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { OnInit } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { AllItemsComponent } from './all-items.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('AllItemsComponent', () => {
   let component: AllItemsComponent;
@@ -8,7 +9,11 @@ describe('AllItemsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AllItemsComponent ]
+      declarations: [ AllItemsComponent ],
+      imports: [
+        HttpClientModule,
+        ReactiveFormsModule
+      ]
     })
     .compileComponents();
 

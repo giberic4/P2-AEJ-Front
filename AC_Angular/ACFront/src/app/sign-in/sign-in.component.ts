@@ -63,19 +63,21 @@ s : string | null = "";
 
 login(u : string, p : string){
 
-  this.service.getUserByUsername(u).subscribe(data => {
-    this.newuser.id=Object.values(data)[0];
-    this.newuser.fname=Object.values(data)[1];
-    this.newuser.lname=Object.values(data)[2];
-    this.newuser.wallet=Object.values(data)[5];
-    console.log(Object.values(data));
-  });
-  
   this.newuser.username = u;
   console.log("username in login : " + u)
   this.newuser.password = p;
   console.log("password in login : " + p)
   console.log(this.newuser);
+
+  this.service.getUserByUsername(this.newuser.username).subscribe(data => {
+    this.newuser.id=Object.values(data)[0];
+    this.newuser.fname=Object.values(data)[1];
+    this.newuser.lname=Object.values(data)[2];
+    this.newuser.wallet=Object.values(data)[5];
+    console.log("IIIIIIIIIIII",Object.values(data));
+  });
+  
+  
 
   this.service.getLogin(this.newuser).subscribe(data => {
     if (data === false){
@@ -91,7 +93,7 @@ login(u : string, p : string){
       sessionStorage.setItem("id", String(this.newuser.id));
       sessionStorage.setItem("loggedin", 'true')
       this.router.navigate([`/user-profile/${this.newuser.username}`]);
-      alert("success!");
+      alert('success!');
       this.service.authenticate();
       // this.nav.call();
       // console.log("Beeeeee",init_status);
@@ -99,12 +101,12 @@ login(u : string, p : string){
   });
 
 
-  this.service.getUserByUsername(u).subscribe(data => {
-    console.log(Object.values(data));
-    this.newuser.id=Object.values(data)[0];
-    this.newuser.fname=Object.values(data)[1];
-    this.newuser.lname=Object.values(data)[2];
-    this.newuser.wallet=Object.values(data)[5];
-  });
+  // this.service.getUserByUsername(u).subscribe(data => {
+  //   console.log(Object.values(data));
+  //   this.newuser.id=Object.values(data)[0];
+  //   this.newuser.fname=Object.values(data)[1];
+  //   this.newuser.lname=Object.values(data)[2];
+  //   this.newuser.wallet=Object.values(data)[5];
+  // });
 }
 }

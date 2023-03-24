@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { SignInComponent } from './sign-in.component';
 import { FormGroup, FormControl, FormBuilder, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 //differences between comp and service test
@@ -16,7 +17,8 @@ describe('SignInComponent', () => {
       declarations: [ SignInComponent ],
       imports: [
         HttpClientTestingModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
       ]
     })
     .compileComponents();

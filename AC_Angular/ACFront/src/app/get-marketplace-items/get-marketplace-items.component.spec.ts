@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
 import { GetMarketplaceItemsComponent } from './get-marketplace-items.component';
 
 describe('GetMarketplaceItemsComponent', () => {
@@ -8,7 +8,8 @@ describe('GetMarketplaceItemsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GetMarketplaceItemsComponent ]
+      declarations: [ GetMarketplaceItemsComponent ],
+      imports: [HttpClientModule]
     })
     .compileComponents();
 

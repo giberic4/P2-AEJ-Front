@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SellItemComponent } from './sell-item.component';
@@ -8,7 +9,8 @@ describe('SellItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SellItemComponent ]
+      declarations: [ SellItemComponent ],
+      imports: [HttpClientModule]
     })
     .compileComponents();
 
@@ -19,5 +21,11 @@ describe('SellItemComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('Default values test', () => {
+    expect(component.inputQuantity).toEqual(0);
+    expect(component.inputPrice).toEqual(0);
+    expect(component.totalSum).toEqual(0);
   });
 });
